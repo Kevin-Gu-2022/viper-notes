@@ -1,0 +1,1 @@
+- Make sure to allow public network access (Windows treats ESP32's access point as a public network and drops all UDP packets)

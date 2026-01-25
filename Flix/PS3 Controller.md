@@ -1,0 +1,2 @@
+- Stores one host MAC address in its EEPRROM and only connects to that one
+- [Repo](https://github.com/user-none/sixaxispairer) to view and set Bluetooth address of controller

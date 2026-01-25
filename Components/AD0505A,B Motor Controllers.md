@@ -1,0 +1,4 @@
+- [AD0505A and AD0505B](https://shop.zubax.com/collections/electric-drives/products/zubax-myxa) are high-end Permanent Magnet Synchronous Motor (PMSM) Field-Oriented Control (FOC) motor controllers (FOC (Electronic Speed Controller) ESC) for light unmanned aircraft and watercraft.
+- Provides up to 1200 W of continuous power output and supports a wide range of operating voltages from 13 to 51 V (Li-ion 4–12 S).
+- Runs its own control firmware called [Telega](https://telega.zubax.com/)
+- Hardware [datasheet](https://files.zubax.com/products/com.zubax.telega/Zubax_Myxa_Datasheet.pdf)
