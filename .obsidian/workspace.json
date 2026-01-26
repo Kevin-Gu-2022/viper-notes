@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "2c19477d9c23134c",
+        "id": "16f239a7f4a09ac6",
         "type": "tabs",
         "children": [
           {
-            "id": "7edac003036df87c",
+            "id": "1a14b4e45e15e71c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Daily/2026-01-23.md",
+                "file": "Flix/Sensor Fusion.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Daily/2026-01-23.md",
+                "file": "Flix/Sensor Fusion.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Daily/2026-01-23.md",
+                "file": "Flix/Sensor Fusion.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Daily/2026-01-23.md"
+                "file": "Flix/Sensor Fusion.md"
               }
             }
           },
@@ -142,7 +142,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 361
+    "width": 424
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -156,13 +156,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "7edac003036df87c",
+  "active": "1a14b4e45e15e71c",
   "lastOpenFiles": [
+    "Daily/2026-01-23.md",
+    "Flix/Sensor Fusion.md",
+    "Flix/Flix.md",
+    "Protocols/Cyphal.md",
     "Flix/Notes from Blog.md",
     "Flix/PS3 Controller.md",
-    "Daily/2026-01-23.md",
     "Daily/2026-01-22.md",
-    "Flix/Flix.md",
     "d2.svg",
     "Motor.md",
     "Flix/Motor Mixer.md",
@@ -181,7 +183,6 @@
     "Resources/Open-Source Flight Controllers.md",
     "Untitled.canvas",
     "Resources/dRehmFlight.md",
-    "Protocols/Cyphal.md",
     "Protocols/Communication Protocols.md",
     "INDI.md",
     "Beard_and_McLain_Small_Unmanned_Aircraft_Theory_and_Practice.pdf",
@@ -190,7 +191,6 @@
     "Components/Pika Spark.md",
     "Components/Viper Components.md",
     "Ground Control Software",
-    "Textbooks/Small Unmanned Aircraft - Theory and Practice.md",
     "Textbooks",
     "Excalidraw",
     "Components/PikaSparkScreenshot.png",
