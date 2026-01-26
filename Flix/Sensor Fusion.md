@@ -4,3 +4,7 @@
 - Using multiple of same sensors, and averaging or voting to see which is more accurate 
 - Combining sensors with physical world: Kalman filters 
 - Using different sensors good too, e.g. gyro and accelerometer
+
+
+[Drone Control and the Complementary Filter](https://www.youtube.com/watch?v=whSw42XddsU)
+- Flix uses complementary filter
