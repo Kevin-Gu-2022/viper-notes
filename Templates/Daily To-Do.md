@@ -31,8 +31,5 @@ if (foundFile) {
 
 ## 🌙 End of Day Review
 
-### What I've Completed:
-- [ ] 
-
 ### What to do tomorrow:
 - [ ] 

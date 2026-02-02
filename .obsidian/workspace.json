@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Flix/Sensor Fusion.md",
+                "file": "Flix/PS3 Controller.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Flix/Sensor Fusion.md",
+                "file": "Flix/PS3 Controller.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Flix/Sensor Fusion.md",
+                "file": "Flix/PS3 Controller.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Flix/Sensor Fusion.md"
+                "file": "Flix/PS3 Controller.md"
               }
             }
           },
@@ -142,7 +142,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 424
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -158,38 +158,42 @@
   },
   "active": "1a14b4e45e15e71c",
   "lastOpenFiles": [
+    "Daily/2026-01-29.md",
+    "Daily/2026-01-30.md",
+    "Daily/2026-01-31.md",
+    "Daily/2026-02-02.md",
     "Daily/2026-01-23.md",
+    "Components/Pika Spark.md",
+    "Flix/basic_complementary_filter.png",
     "Flix/Sensor Fusion.md",
-    "Flix/Flix.md",
-    "Protocols/Cyphal.md",
-    "Flix/Notes from Blog.md",
+    "Flix/Pasted image 20260122214247.png",
     "Flix/PS3 Controller.md",
-    "Daily/2026-01-22.md",
-    "d2.svg",
-    "Motor.md",
     "Flix/Motor Mixer.md",
-    "Pasted image 20260122214247.png",
-    "Ground Control Software/QGroundControl.md",
-    "Resources/Youtube Channels.md",
-    "Templates/Daily To-Do.md",
-    "Daily/2026-01-21.md",
-    "Control Algorithms/Modelling Drone Motors.md",
+    "Flix/Flix Overview.md",
+    "Flix/Flix Gazebo Simulation.md",
+    "Resources/dRehmFlight.md",
+    "Protocols/Cyphal.md",
+    "Protocols/Communication Protocols.md",
+    "Components/AD0505A,B Motor Controllers.md",
+    "Simulation/Gazebo 11.md",
+    "Simulation",
+    "Control Algorithms/INDI.md",
     "Goals.md",
-    "Daily/22 Jan 2026.md",
-    "Daily/Untitled.md",
+    "Untitled.md",
+    "Flix/d2.svg",
+    "Resources/Youtube Channels.md",
+    "Resources/Carbon Aeronautics.md",
+    "Resources/Open-Source Flight Controllers.md",
+    "Ground Control Software/QGroundControl.md",
+    "Control Algorithms/PID.md",
+    "Control Algorithms/Modelling Drone Motors.md",
+    "Control Algorithms/Control Algorithms.md",
+    "Flix/practical complementary filter.png",
+    "Flix/gyro_drift.png",
     "Daily",
     "Templates",
-    "Untitled.md",
-    "Resources/Open-Source Flight Controllers.md",
     "Untitled.canvas",
-    "Resources/dRehmFlight.md",
-    "Protocols/Communication Protocols.md",
-    "INDI.md",
     "Beard_and_McLain_Small_Unmanned_Aircraft_Theory_and_Practice.pdf",
-    "Resources/Carbon Aeronautics.md",
-    "Control Algorithms/Control Algorithms.md",
-    "Components/Pika Spark.md",
-    "Components/Viper Components.md",
     "Ground Control Software",
     "Textbooks",
     "Excalidraw",
@@ -197,7 +201,6 @@
     "Control Algorithms",
     "Resources",
     "Protocols",
-    "Components",
     "Pasted image 20251127122002.png"
   ]
 }

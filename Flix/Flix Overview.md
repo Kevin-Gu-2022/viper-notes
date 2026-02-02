@@ -1,11 +1,8 @@
 [Flix](https://github.com/okalachev/flix) is an ESP32-based quadcopter build from scratch
 
 More info in [blog](https://habr.com/ru/articles/814127/)
-
 ## PID Control
 - Example [implementation](https://github.com/okalachev/flix/blob/master/flix/control.ino)
-
-
 ## Euler Angles
 - Roll ($x$), Pitch ($y$), Yaw ($z$) are rotations about their respective axes
 - Order of rotation MATTERS!!
@@ -20,7 +17,6 @@ More info in [blog](https://habr.com/ru/articles/814127/)
 
 ### Gimbal Lock
 - Gimbal lock is when a degree of freedom is lost due to the alignment of two of the axes. Happens when the middle axis aligns with either of the other two. For example, consider a 3D camera that has pitch at 90$\degree$: the pan and tilt will both produce the same effect. Quaternions eliminate this issue with the addition of a 4th axis
-
 
 ## Frames of Reference
 - **Inertial frame**: Earth-fixed coordinate system with origin at defined home location

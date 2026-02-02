@@ -1,3 +1,5 @@
- [Cyphal](https://opencyphal.org/) is an open technology for real-time intravehicular distributed computing and communication based on modern networking standards (Ethernet, CAN FD, etc.). It was created to address the challenge of on-board deterministic computing and data distribution in next-generation intelligent vehicles: manned and unmanned aircraft, spacecraft, robots, and cars.
-
-Cyphal is the underlying protocol, while OpenCyphal is the open-source project that provides the actual implementation.
+-  [Cyphal](https://opencyphal.org/) is an open technology for real-time intravehicular distributed computing and communication based on modern networking standards (Ethernet, CAN FD, etc.)
+- Cyphal is the underlying protocol, while OpenCyphal is the open-source project that provides the actual implementation.
+- Broke off from UAVCAN project - this is v1 of it, while v0 is now called DroneCAN, which is more widely adopted. See [comparison](https://forum.opencyphal.org/t/cyphal-vs-dronecan/1814)
+- CAN is the data-link layer of intravehicular comms, while Cyphal is the protocol that takes care of the actual messaging
+- Cyphal is transport agnostic, allowing heterogeneous transport redundancy, where multiple physical transports with different failure modes (e.g. both CAN and a wireless link)

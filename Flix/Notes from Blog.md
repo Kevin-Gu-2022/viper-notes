@@ -20,5 +20,6 @@ flowchart TD
 - The user's input and the current attitude are used as inputs to the attitude control level, which itself outputs the desired angular velocity for the next level
 - The angular velocity level uses a PID controller to determine the necessary control signals for the motors
 - The motor control signals go to the motor mixer that actually delivers the correct controls to individual motors. See details [[Motor Mixer|here]].
+- Control loop constrained by IMU frequency, which is set at 1 kHz
 
 ## Control Algorithm Flowchart ![[d2.svg]]
