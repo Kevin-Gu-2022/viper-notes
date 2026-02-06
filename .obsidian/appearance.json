@@ -6,5 +6,6 @@
     "extended-colorschemes",
     "minimal-cards",
     "custom-background"
-  ]
+  ],
+  "nativeMenus": false
 }

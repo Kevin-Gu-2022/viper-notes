@@ -1,0 +1,9 @@
+- Serial communication with CAN high and low lines
+- Bus topology so no masters. Also less wires
+- Half duplex!
+- Asynchronous
+- Built in CRC
+- Each message contains an ID + data similar to I2C
+- Differential signal between 2 lines means no bit flips due to interference
+	- SIGNAL = CANH - CANL
+	- Wires next to each other so interference affects both in same way

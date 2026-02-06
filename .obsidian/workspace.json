@@ -13,13 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Flix/PS3 Controller.md",
+                "file": "Components/AD0505A,B Motor Controllers (ESCs).md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "ba0baa08e2a2d7cc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Manuals/Dual Boot Ubuntu.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -48,7 +61,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#Remove",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Flix/PS3 Controller.md",
+                "file": "Manuals/Dual Boot Ubuntu.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Flix/PS3 Controller.md",
+                "file": "Manuals/Dual Boot Ubuntu.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Flix/PS3 Controller.md"
+                "file": "Manuals/Dual Boot Ubuntu.md"
               }
             }
           },
@@ -156,40 +169,44 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "1a14b4e45e15e71c",
+  "active": "ba0baa08e2a2d7cc",
   "lastOpenFiles": [
-    "Daily/2026-01-29.md",
-    "Daily/2026-01-30.md",
-    "Daily/2026-01-31.md",
-    "Daily/2026-02-02.md",
-    "Daily/2026-01-23.md",
+    "Manuals/Setting Up ssh Keys.md",
+    "Daily/2026-02-04.md",
+    "Daily/2026-02-05.md",
+    "Daily/2026-02-06.md",
+    "Manuals/Shrinking WSL.md",
+    "Manuals/Docker Setup.md",
+    "Tools/Yakut.md",
+    "Components/PS3 Controller.md",
+    "Protocols/Cyphal.md",
     "Components/Pika Spark.md",
-    "Flix/basic_complementary_filter.png",
+    "Components/AD0505A,B Motor Controllers (ESCs).md",
+    "Components/Zubax Babel.md",
+    "Components/T-Motor F100 1100kV.md",
+    "Components/PikaSparkScreenshot.png",
+    "Tools/Yukon.md",
+    "Daily/2026-02-02.md",
+    "Daily/2026-02-03.md",
+    "Tools",
+    "Components/Viper Components.md",
+    "Manuals/Dual Boot Ubuntu.md",
+    "Manuals",
+    "Protocols/Controller Area Network.md",
+    "Daily/2026-01-31.md",
+    "Daily/2026-01-30.md",
+    "Simulation/Gazebo 11.md",
+    "Templates/Daily To-Do.md",
     "Flix/Sensor Fusion.md",
-    "Flix/Pasted image 20260122214247.png",
-    "Flix/PS3 Controller.md",
-    "Flix/Motor Mixer.md",
     "Flix/Flix Overview.md",
     "Flix/Flix Gazebo Simulation.md",
-    "Resources/dRehmFlight.md",
-    "Protocols/Cyphal.md",
-    "Protocols/Communication Protocols.md",
-    "Components/AD0505A,B Motor Controllers.md",
-    "Simulation/Gazebo 11.md",
+    "Flix/img/practical complementary filter.png",
+    "Flix/img/gyro_drift.png",
+    "Flix/img/Pasted image 20260122214247.png",
+    "Flix/img/basic_complementary_filter.png",
+    "Flix/img",
     "Simulation",
-    "Control Algorithms/INDI.md",
-    "Goals.md",
-    "Untitled.md",
-    "Flix/d2.svg",
-    "Resources/Youtube Channels.md",
-    "Resources/Carbon Aeronautics.md",
-    "Resources/Open-Source Flight Controllers.md",
-    "Ground Control Software/QGroundControl.md",
-    "Control Algorithms/PID.md",
-    "Control Algorithms/Modelling Drone Motors.md",
-    "Control Algorithms/Control Algorithms.md",
-    "Flix/practical complementary filter.png",
-    "Flix/gyro_drift.png",
+    "Flix/img/d2.svg",
     "Daily",
     "Templates",
     "Untitled.canvas",
@@ -197,10 +214,6 @@
     "Ground Control Software",
     "Textbooks",
     "Excalidraw",
-    "Components/PikaSparkScreenshot.png",
-    "Control Algorithms",
-    "Resources",
-    "Protocols",
     "Pasted image 20251127122002.png"
   ]
 }

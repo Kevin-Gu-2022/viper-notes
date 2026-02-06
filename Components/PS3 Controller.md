@@ -1,6 +1,8 @@
 - Stores one host MAC address in its EEPRROM and only connects to that one
 - [Repo](https://github.com/user-none/sixaxispairer) to view and set Bluetooth address of controller
 ### PS3 Controller Clone
+>[!Note]
+> Only needed in Ubuntu 20.04
 - The PS3 controller provided is a clone that switches itself to a Xbox when it detects it is connected to a PC. Generally Xbox controllers have better support
 - Not responsive until a sequence of codes are sent to wake it up
 ```python
