@@ -57,3 +57,71 @@ echo "Auto-selected node-ID for this session: $UAVCAN__NODE__ID"
 - Storing of values using the registers will only update after the node is power cycled, storing configuration in its persistent memory
 - if publisher not active, its ID will be 65535. Need to set it to something else for it to start publishing
 - Yakut split into request/response on top and publisher/subscribers on bottom 
+
+# Yakut Monitor Output Interpretation
+
+The `yakut monitor` command provides a real-time "top-like" view of the **OpenCyphal** (formerly UAVCAN) network.
+
+## 1. Node Status (Header Section)
+
+This section lists all active devices currently detected on the bus.
+
+|**Column**|**Meaning**|
+|---|---|
+|**NodID**|The unique Node ID (0–127 for CAN).|
+|**Mode**|`oper` (Operational) is the standard healthy state.|
+|**Health**|`nomina` (Nominal) indicates no internal errors.|
+|**VSSC**|Vendor-Specific Status Code (usually `0`).|
+|**Uptime**|Time since power-on (**Days:Hours:Minutes:Seconds**).|
+|**Name**|The human-readable string identifying the hardware/software.|
+
+**Current Nodes:**
+- **63:** `org.opencyphal.yakut.monitor` (The monitor tool itself).
+- **100:** `107-systems.viper` (Your target hardware device).
+---
+## 2. Message Traffic (MESSG Section)
+
+This matrix displays **Subject IDs** (data topics) and their publication frequencies.
+
+- **Rows (Left IDs):** These are the **Subject IDs** (e.g., 113, 114, 116).
+    
+- **Columns (63, 100):** Data mapped to specific Node IDs.
+    
+- **Cell Values:** Represent the frequency in **Hertz (Hz)**.
+    
+    - _Example:_ Node 100 is publishing Subjects 113, 114, and 116 at **100 Hz**.
+        
+    - _Example:_ `0` indicates the node knows the port but isn't currently sending/receiving.
+        
+### Standard Subject IDs
+
+- **7509 / 7510:** Standard Cyphal Heartbeat and Port List messages. These are mandatory for a healthy node.
+
+---
+## 3. Request/Response (RQ+RS Section)
+
+This section tracks **Service** interactions (Client-Server) rather than asynchronous messages.
+
+- **IDs 384, 385, 430:** These are specific Service IDs (likely for configuration, diagnostics, or file transfer).
+    
+- **Values (0):** Currently, no requests or responses are active on these services.
+    
+---
+## 4. Network Statistics (Totals Section)
+
+The bottom section provides an aggregate health check of the bus.
+
+|**Metric**|**Description**|
+|---|---|
+|**∑t/s**|Total Transfers per second. Node 100 is pushing **401 t/s**.|
+|**∑B/s**|Total Bandwidth used. Node 100 is using approx **3 KB/s**.|
+|**Transport Errors**|**Critical Metric.** Should stay at **0**. If this increases, check your $120 \Omega$ termination or wiring.|
+
+---
+## Pro-Tips for Interpretation
+
+> [!TIP]
+> 
+> **Activity Indicators:** A `.` or blinking character indicates sporadic/low-frequency activity.
+> 
+> **The "Missing" Bytes:** The `TOTAL` bandwidth (3 KB/s) is higher than the `MESSG` bandwidth (2 KB/s) because it accounts for protocol overhead: CAN headers, tail bytes, CRCs, and padding.

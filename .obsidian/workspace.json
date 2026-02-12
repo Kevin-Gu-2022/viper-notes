@@ -8,31 +8,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "1a14b4e45e15e71c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Components/AD0505A,B Motor Controllers (ESCs).md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "ba0baa08e2a2d7cc",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Manuals/Dual Boot Ubuntu.md",
+                "file": "Tools/Yakut.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -98,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Manuals/Dual Boot Ubuntu.md",
+                "file": "Tools/Yakut.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Manuals/Dual Boot Ubuntu.md",
+                "file": "Tools/Yakut.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Manuals/Dual Boot Ubuntu.md"
+                "file": "Tools/Yakut.md"
               }
             }
           },
@@ -171,35 +158,35 @@
   },
   "active": "ba0baa08e2a2d7cc",
   "lastOpenFiles": [
-    "Manuals/Setting Up ssh Keys.md",
+    "Daily/2026-02-12.md",
+    "Daily/2026-02-11.md",
+    "Daily/2026-02-10.md",
+    "Control Algorithms/NDI.md",
+    "Control Algorithms/INDI.md",
+    "Control Algorithms/PID.md",
+    "Control Algorithms/Modelling Drone Motors.md",
+    "Control Algorithms/Control Algorithms.md",
+    "Daily/2026-01-30.md",
+    "Daily/2026-01-31.md",
+    "Daily/2026-02-02.md",
+    "Daily/2026-02-03.md",
     "Daily/2026-02-04.md",
-    "Daily/2026-02-05.md",
+    "Daily/2026-02-09.md",
     "Daily/2026-02-06.md",
+    "Components/Pika Spark.md",
+    "Tools/Docker.md",
+    "Components/AD0505A,B Motor Controllers (ESCs).md",
+    "Manuals/Dual Boot Ubuntu.md",
+    "Manuals/Setting Up ssh Keys.md",
+    "Daily/2026-02-05.md",
     "Manuals/Shrinking WSL.md",
     "Manuals/Docker Setup.md",
     "Tools/Yakut.md",
     "Components/PS3 Controller.md",
     "Protocols/Cyphal.md",
-    "Components/Pika Spark.md",
-    "Components/AD0505A,B Motor Controllers (ESCs).md",
-    "Components/Zubax Babel.md",
-    "Components/T-Motor F100 1100kV.md",
     "Components/PikaSparkScreenshot.png",
-    "Tools/Yukon.md",
-    "Daily/2026-02-02.md",
-    "Daily/2026-02-03.md",
     "Tools",
-    "Components/Viper Components.md",
-    "Manuals/Dual Boot Ubuntu.md",
     "Manuals",
-    "Protocols/Controller Area Network.md",
-    "Daily/2026-01-31.md",
-    "Daily/2026-01-30.md",
-    "Simulation/Gazebo 11.md",
-    "Templates/Daily To-Do.md",
-    "Flix/Sensor Fusion.md",
-    "Flix/Flix Overview.md",
-    "Flix/Flix Gazebo Simulation.md",
     "Flix/img/practical complementary filter.png",
     "Flix/img/gyro_drift.png",
     "Flix/img/Pasted image 20260122214247.png",

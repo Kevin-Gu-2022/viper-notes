@@ -1,0 +1,4 @@
+- Docker is a program that allows applications to run in containers - same kernel, but everything else is isolated (unless you choose to mount or share them, e.g. disk volumes, ports)
+- A *Docker image* is an executable that defines everything needed to run a *Docker container*, which is the actual instance
+- An image is composed of multiple layers defined by the Docker file - generally one command per layer
+- At the very top is the container layer, which is actually what's writable - all the other layers on bottom are read-only and immutable
