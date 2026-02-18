@@ -51,7 +51,6 @@ echo "Auto-selected node-ID for this session: $UAVCAN__NODE__ID"
  - *Source* `env_sclan.sh`. Do not execute it with `./` as this would not save the environment variables defined 
  - Don't forget to set path for `.cyphal`
 
-
 # Operation
 - Yakut/Yukon opens its own Cyphal node to communicate
 - Storing of values using the registers will only update after the node is power cycled, storing configuration in its persistent memory
@@ -78,7 +77,6 @@ This section lists all active devices currently detected on the bus.
 **Current Nodes:**
 - **63:** `org.opencyphal.yakut.monitor` (The monitor tool itself).
 - **100:** `107-systems.viper` (Your target hardware device).
----
 ## 2. Message Traffic (MESSG Section)
 
 This matrix displays **Subject IDs** (data topics) and their publication frequencies.
@@ -97,7 +95,6 @@ This matrix displays **Subject IDs** (data topics) and their publication frequen
 
 - **7509 / 7510:** Standard Cyphal Heartbeat and Port List messages. These are mandatory for a healthy node.
 
----
 ## 3. Request/Response (RQ+RS Section)
 
 This section tracks **Service** interactions (Client-Server) rather than asynchronous messages.
@@ -106,7 +103,6 @@ This section tracks **Service** interactions (Client-Server) rather than asynchr
     
 - **Values (0):** Currently, no requests or responses are active on these services.
     
----
 ## 4. Network Statistics (Totals Section)
 
 The bottom section provides an aggregate health check of the bus.
@@ -117,7 +113,6 @@ The bottom section provides an aggregate health check of the bus.
 |**∑B/s**|Total Bandwidth used. Node 100 is using approx **3 KB/s**.|
 |**Transport Errors**|**Critical Metric.** Should stay at **0**. If this increases, check your $120 \Omega$ termination or wiring.|
 
----
 ## Pro-Tips for Interpretation
 
 > [!TIP]
