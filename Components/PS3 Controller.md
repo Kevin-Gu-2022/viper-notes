@@ -1,10 +1,19 @@
 - Stores one host MAC address in its EEPRROM and only connects to that one
 - [Repo](https://github.com/user-none/sixaxispairer) to view and set Bluetooth address of controller
-### PS3 Controller Clone
->[!Note]
-> Only needed in Ubuntu 20.04
+
+- Blue Controller MAC: 41427A8A33F3
+- Lenovo MAC: 18:1D:EA:33:CD:26
+## PS3 Controller Clone
+
 - The PS3 controller provided is a clone that switches itself to a Xbox when it detects it is connected to a PC. Generally Xbox controllers have better support
+
+
+### Wakeup Controller
+
+>[!Note]
+> Following section only needed in Ubuntu 20.04
 - Not responsive until a sequence of codes are sent to wake it up
+
 ```python
 import usb.core
 
@@ -41,3 +50,6 @@ sudo udevadm trigger
 ```
 - Also make sure the Python script has the necessary executing permissions
 - Finally, reboot if still not working
+
+## Connecting Controller
+- Use the 2 scripts to 
