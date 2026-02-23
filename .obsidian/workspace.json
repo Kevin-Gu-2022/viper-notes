@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Protocols/100BASE-T1S.md",
+                "file": "Components/Connectors.md",
                 "mode": "source",
                 "source": false
               }
@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "batter",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Protocols/100BASE-T1S.md",
+                "file": "Components/Connectors.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Protocols/100BASE-T1S.md",
+                "file": "Components/Connectors.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Protocols/100BASE-T1S.md"
+                "file": "Components/Connectors.md"
               }
             }
           },
@@ -158,11 +158,19 @@
   },
   "active": "ba0baa08e2a2d7cc",
   "lastOpenFiles": [
-    "Daily/2026-02-18.md",
-    "Protocols/100BASE-T1S.md",
+    "Components/Pika Spark.md",
+    "Daily/2026-02-20.md",
+    "Components/LiPo Battery.md",
+    "Components/Connectors.md",
     "Components/T-Motor F100 1100kV.md",
-    "Components/AD0505A,B Motor Controllers (ESCs).md",
+    "Daily/2026-02-19.md",
+    "Daily/2026-02-18.md",
+    "Components/AD0505A Myxa Motor Controllers (ESCs).md",
+    "Components/Pika-Spark-Rev-1-1-BNO085.pdf",
+    "Components/PikaSparkScreenshot.png",
+    "Flix/Flix Overview.md",
     "Daily/2026-02-17.md",
+    "Protocols/100BASE-T1S.md",
     "Daily/2026-02-02.md",
     "Daily/2026-02-16.md",
     "Daily/2026-02-10.md",
@@ -177,14 +185,6 @@
     "Daily/2026-02-13.md",
     "Tools/Yakut.md",
     "Components/Zubax Babel.md",
-    "Daily/2026-01-27.md",
-    "Control Algorithms/NDI.md",
-    "Control Algorithms/INDI.md",
-    "Control Algorithms/PID.md",
-    "Control Algorithms/Modelling Drone Motors.md",
-    "Control Algorithms/Control Algorithms.md",
-    "Daily/2026-01-30.md",
-    "Components/PikaSparkScreenshot.png",
     "Tools",
     "Manuals",
     "Flix/img/practical complementary filter.png",
@@ -200,7 +200,6 @@
     "Beard_and_McLain_Small_Unmanned_Aircraft_Theory_and_Practice.pdf",
     "Ground Control Software",
     "Textbooks",
-    "Excalidraw",
     "Pasted image 20251127122002.png"
   ]
 }

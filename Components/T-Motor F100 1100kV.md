@@ -1,1 +1,12 @@
 - [Testing results](https://www.t-hobby.com/products/fpv-brushless-motor-cinematic-drones-f100-2810)
+- Motor datasheet suggest 6S 5200Mah 75C battery
+- Kv: 1100Kv
+- Configuration: 12N14P
+- Max Continuous Current: 45.6A
+- Internal Resistance: 61mΩ
+- Motor Dimensions: Φ 33.4mm x 38.05mm
+- Stator Dimensions: Φ28mm x 10mm
+- Shaft Diameter: Φ 5mm
+- Mounting Pattern: 19mm Φ
+- Wire Dimensions: 18AWG x 250mm
+- Weight (w/ wires): 67g
