@@ -52,4 +52,96 @@ sudo udevadm trigger
 - Finally, reboot if still not working
 
 ## Connecting Controller
-- Use the 2 scripts to 
+- Use the following 2 scripts to read and set MAC addresses
+- Not very robust. Still disconnects after a while, in which case just forget the device and reconnect via Bluetooth. I suspect it is a battery issue...
+
+
+### `controller_read.py`
+
+```python
+import usb.core
+import usb.util
+
+# PS3 Controller IDs (Common for originals and most knockoffs)
+VENDOR_ID = 0x045E
+PRODUCT_ID = 0x028E
+
+def get_master_mac():
+    # Find the device
+    dev = usb.core.find(idVendor=VENDOR_ID, idProduct=PRODUCT_ID)
+
+    if dev is None:
+        print("Controller not found. Check the USB connection.")
+        return
+
+    # Detach kernel driver if Ubuntu is already using it
+    if dev.is_kernel_driver_active(0):
+        dev.detach_kernel_driver(0)
+
+    try:
+        # Request Feature Report 0xf5 (where the MAC is stored)
+        # bmRequestType: 0xa1 (Interface, Class, Device-to-Host)
+        # bRequest: 0x01 (GET_REPORT)
+        # wValue: 0x03f5 (Feature Report 0xf5)
+        msg = dev.ctrl_transfer(0xa1, 0x01, 0x03f5, 0, 8)
+        
+        # The Master MAC is usually in bytes [2:8]
+        master_mac = ":".join([f"{b:02X}" for b in msg[2:8]])
+        print(f"Stored Master MAC Address: {master_mac}")
+
+    except Exception as e:
+        print(f"Error reading from device: {e}")
+    finally:
+        # Reattach the driver so the OS can use it again
+        usb.util.dispose_resources(dev)
+        try:
+            dev.attach_kernel_driver(0)
+        except:
+            pass
+
+if __name__ == "__main__":
+    get_master_mac()
+```
+
+### `set_controller.py`
+```python
+import usb.core
+import usb.util
+
+# Common PS3 Controller IDs
+VENDOR_ID = 0x045E
+PRODUCT_ID = 0x028E
+
+def set_master_mac(new_master_mac_str):
+    # Convert "AA:BB:CC:DD:EE:FF" to a list of bytes
+    bytes_mac = [int(x, 16) for x in new_master_mac_str.split(':')]
+    
+    # The PS3 'Set Master' packet structure for Feature Report 0xf5:
+    # [Report ID (0xf5), Padding (0x00), MAC_0, MAC_1, MAC_2, MAC_3, MAC_4, MAC_5]
+    payload = [0xf5, 0x00] + bytes_mac
+
+    dev = usb.core.find(idVendor=VENDOR_ID, idProduct=PRODUCT_ID)
+    if dev is None:
+        print("Controller not found.")
+        return
+
+    if dev.is_kernel_driver_active(0):
+        dev.detach_kernel_driver(0)
+
+    try:
+        # bmRequestType: 0x21 (Interface, Class, Host-to-Device)
+        # bRequest: 0x09 (SET_REPORT)
+        # wValue: 0x03f5 (Feature Report 0xf5)
+        dev.ctrl_transfer(0x21, 0x09, 0x03f5, 0, payload)
+        print(f"Successfully wrote {new_master_mac_str} to controller!")
+        print("Now unplug the USB and press the PS button to pair via Bluetooth.")
+    except Exception as e:
+        print(f"Failed to write MAC address: {e}")
+    finally:
+        usb.util.dispose_resources(dev)
+
+if __name__ == "__main__":
+    # REPLACE THIS with your PC's Bluetooth MAC
+    my_pc_mac = "18:1D:EA:33:CD:26" 
+    set_master_mac(my_pc_mac)
+```
