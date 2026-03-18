@@ -1,14 +1,8 @@
-- Stores one host MAC address in its EEPRROM and only connects to that one
-- [Repo](https://github.com/user-none/sixaxispairer) to view and set Bluetooth address of controller
-
 - Blue Controller MAC: 41427A8A33F3
 - Lenovo MAC: 18:1D:EA:33:CD:26
-## PS3 Controller Clone
 
 - The PS3 controller provided is a clone that switches itself to a Xbox when it detects it is connected to a PC. Generally Xbox controllers have better support
-
-
-### Wakeup Controller
+## Wakeup Controller
 
 >[!Note]
 > Following section only needed in Ubuntu 20.04
@@ -52,11 +46,14 @@ sudo udevadm trigger
 - Finally, reboot if still not working
 
 ## Connecting Controller
-- Use the following 2 scripts to read and set MAC addresses
-- Not very robust. Still disconnects after a while, in which case just forget the device and reconnect via Bluetooth. I suspect it is a battery issue...
-
-
+- Stores one host MAC address in its EEPRROM and only connects to that one
+- Because we are using a clone, there aren't really any existing tools out there to change the host MAC address stored
+- So, use the following 2 scripts to read and set MAC addresses
+- Make sure to also edit the config file to allow for un-bonded access 
+- A successful connection = a solid red LED on Player 1
+- Flashing LED means it is attempting to connect
 ### `controller_read.py`
+- Dependency: `sudo apt install python3-usb`
 
 ```python
 import usb.core
@@ -144,4 +141,32 @@ if __name__ == "__main__":
     # REPLACE THIS with your PC's Bluetooth MAC
     my_pc_mac = "18:1D:EA:33:CD:26" 
     set_master_mac(my_pc_mac)
+```
+
+### Fixing Connection Issues
+Edit the config file:
+
+```bash
+sudo vim /etc/bluetooth/input.conf
+```  
+    
+- Find the line `#ClassicBondedOnly=true` (it might be commented out) and change to false.
+- Restart PC
+- This is needed because the PS3 controller doesn't implement typical Bluetooth bonding handshakes on subsequent connections
+
+# Interfacing with ROS2
+- Dependencies:
+```bash
+sudo apt install ros-$ROS_DISTRO-joy ros-$ROS_DISTRO-teleop-twist-joy
+```
+- Two main nodes offered by `joy` package:
+	- `game_controller_node`: Uses SDL2, which has an additional abstraction to map to typical controller outputs
+	- `joy_node`: Raw data from joystick. Message order dependent on manufacturer
+
+
+- Commands:
+```bash
+ros2 run joy joy_node
+# Start another terminal
+ros2 topic echo /joy_node
 ```
