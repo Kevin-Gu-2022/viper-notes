@@ -1,3 +1,4 @@
+# Gantt Chart
 ```mermaid
 gantt
     title Foucault Dynamics: Viper Quadcopter Development
@@ -38,3 +39,4 @@ gantt
     HIL Constrained            :pc3, 2026-05-18, 21d
     Flight Testing             :pc4, 2026-06-01, 14d
 ```
+Looks way nicer on Linux lol
