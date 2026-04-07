@@ -202,6 +202,7 @@ ros2 topic echo /joy_node
 Remap using yaml file. Only for `/cmd_vel`
 
 ```yaml
+# Use /**: if want to use with launcher.py as Viper uses its own namespace
 teleop_twist_joy_node:
   ros__parameters:
     # 1. Axis Mapping (Sticks)
@@ -245,3 +246,6 @@ ros2 topic echo /cmd_vel
 In the real thing, we'd use the `launch.py` script
 
 Annoyingly, wired and wireless connections have different mappings
+
+## Disconnection Events
+From tests on Ubuntu 22.04 and ROS Humble, it appears that disconnecting controller (whether that be from loss of connection or inactivity) will just stop publishing messages on `/joy`. So, after a period of inactivity, the controller can simply be reactivated by pressing P3 button. This 're-registers' the node seamlessly without needing to restart whole embedded application.

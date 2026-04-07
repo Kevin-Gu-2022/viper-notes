@@ -17,6 +17,8 @@ YOCTO_DIR=$(pwd)
 ```
 
 
+# Building Image
+
 Clone required repositories. This is NXP's curated snapshot of Yocto with their own layers bundled too, i.e. `meta-imx`. `repo sync` pulls in the recipes that will be used to build.
 ```bash
 cd $YOCTO_DIR
@@ -76,6 +78,13 @@ Build the image. Will take *forever*
 bitbake <image e.g. pika-spark-base-image>  # Defined in a bb file
 ```
 
+
+> [!Warning]
+> Will need a minimum of 140GB in free disk space, even for the most basic image
+> After building, you may delete `/tmp` in the build directory to recover disk space. Contains build artefacts, logs, the actual final kernel image, source code etc.
+
+The `sstate-cache` contains the archived versions of the built binaries.
+
 ~~`vim` failed to build. Maybe an X11 [issue](https://community.nxp.com/t5/i-MX-Processors/NXP-Yocto-5-4-3-vim-build-error/m-p/1095029). Simply add:
 ```bash
 PACKAGECONFIG_remove = "x11"
@@ -98,10 +107,11 @@ Interestingly, X11 is still there after running the `grep` command:
 ```
 PACKAGECONFIG=" acl x11 nls "
 ```
+
 # Patching with `PREEMPT_RT`
 - https://community.nxp.com/t5/i-MX-Processors-Knowledge-Base/i-MX-9-How-to-Use-the-Preempt-RT-Kernel-in-the-Standard-Yocto/ta-p/1956566?profile.language=en
 
-# Entering Docker
+# Entering Docker Build Container
 ```bash
 docker start yocto-nxp-scarthgap
 docker exec -it yocto-nxp-scarthgap bash
