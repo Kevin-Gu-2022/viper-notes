@@ -22,4 +22,38 @@ flowchart TD
 - The motor control signals go to the motor mixer that actually delivers the correct controls to individual motors. See details [[Motor Mixer|here]].
 - Control loop constrained by IMU frequency, which is set at 1 kHz
 
-## Control Algorithm Flowchart ![[d2.svg]]
+## Control Algorithm Flowchart
+![[d2.svg]]
+
+## Attitude Controller
+```c++
+void interpretControls() {
+	//...
+	if (mode == STAB) {
+		float yawTarget = attitudeTarget.getYaw();
+		if (!armed || invalid(yawTarget) || controlYaw != 0) yawTarget = attitude.getYaw(); // reset yaw target
+		attitudeTarget = Quaternion::fromEuler(Vector(controlRoll * tiltMax, controlPitch * tiltMax, yawTarget));
+		ratesExtra = Vector(0, 0, -controlYaw * maxRate.z); // positive yaw stick means clockwise rotation in FLU
+	//...
+}
+
+
+
+void controlAttitude() {
+	if (!armed || attitudeTarget.invalid() || thrustTarget < 0.1) return; // skip attitude control
+
+	const Vector up(0, 0, 1);
+	Vector upActual = Quaternion::rotateVector(up, attitude);
+	Vector upTarget = Quaternion::rotateVector(up, attitudeTarget);
+
+	Vector error = Vector::rotationVectorBetween(upTarget, upActual);
+
+	// This ratesExtra.x and .y are both 0
+	ratesTarget.x = rollPID.update(error.x) + ratesExtra.x;
+	ratesTarget.y = pitchPID.update(error.y) + ratesExtra.y;
+
+	float yawError = wrapAngle(attitudeTarget.getYaw() - attitude.getYaw());
+	// The feedforward term allows continuous yaw rotation
+	ratesTarget.z = yawPID.update(yawError) + ratesExtra.z;
+}
+```

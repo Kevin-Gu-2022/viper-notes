@@ -66,14 +66,14 @@ The `yakut monitor` command provides a real-time "top-like" view of the **OpenCy
 
 This section lists all active devices currently detected on the bus.
 
-|**Column**|**Meaning**|
-|---|---|
-|**NodID**|The unique Node ID (0–127 for CAN).|
-|**Mode**|`oper` (Operational) is the standard healthy state.|
-|**Health**|`nomina` (Nominal) indicates no internal errors.|
-|**VSSC**|Vendor-Specific Status Code (usually `0`).|
-|**Uptime**|Time since power-on (**Days:Hours:Minutes:Seconds**).|
-|**Name**|The human-readable string identifying the hardware/software.|
+| **Column** | **Meaning**                                                  |
+| ---------- | ------------------------------------------------------------ |
+| **NodID**  | The unique Node ID (0–127 for CAN).                          |
+| **Mode**   | `oper` (Operational) is the standard healthy state.          |
+| **Health** | `nomina` (Nominal) indicates no internal errors.             |
+| **VSSC**   | Vendor-Specific Status Code (usually `0`).                   |
+| **Uptime** | Time since power-on (**Days:Hours:Minutes:Seconds**).        |
+| **Name**   | The human-readable string identifying the hardware/software. |
 
 **Current Nodes:**
 - **63:** `org.opencyphal.yakut.monitor` (The monitor tool itself).

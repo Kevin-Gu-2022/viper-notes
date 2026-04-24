@@ -227,7 +227,7 @@ teleop_twist_joy_node:
       yaw: 1.2            # Max rotation speed
 
     # 3. Safety & Enable Buttons
-    # The node will NOT publish commands unless this button is held.
+    # The node will NOT publish commands unless this button is held (values zeroed out too)
     enable_button: 7      # e.g., Right Bumper (R1)
     require_enable_button: true
 
@@ -247,5 +247,14 @@ In the real thing, we'd use the `launch.py` script
 
 Annoyingly, wired and wireless connections have different mappings
 
+### [geometry_msgs](https://docs.ros.org/en/noetic/api/geometry_msgs/html/index-msg.html)/Twist Message
+| Field     | Joystick Position         | Meaning                   |
+| --------- | ------------------------- | ------------------------- |
+| linear.x  | Right Joystick Front/Back | Strafe forward/backward   |
+| linear.y  | Right Joystick Left/Right | Strafe left/right         |
+| linear.z  | Left Joystick Front/Back  | Throttle to climb/descend |
+| angular.x | ignored                   | unused                    |
+| angular.y | ingnored                  | unused                    |
+| angular.z | Left Joystick Left/Right  | turning CW/CCW            |
 ## Disconnection Events
 From tests on Ubuntu 22.04 and ROS Humble, it appears that disconnecting controller (whether that be from loss of connection or inactivity) will just stop publishing messages on `/joy`. So, after a period of inactivity, the controller can simply be reactivated by pressing P3 button. This 're-registers' the node seamlessly without needing to restart whole embedded application.

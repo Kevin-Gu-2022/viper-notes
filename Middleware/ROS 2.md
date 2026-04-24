@@ -23,3 +23,17 @@ source install/setup.bash
 - Now that the environment is set up, you can execute your code.
 	- **To run a single node:** `ros2 run <package_name> <executable_name>`
 	- **To run a launch file (multiple nodes):** `ros2 launch <package_name> <launch_file_name>`
+
+# QoS
+#### Liveliness
+- Tracks 'health' of node, i.e. is node still there?
+- Normally just done by the DDS ROS 2 middleware
+- LIVELINESS_MANUAL_BY_TOPIC - The signal that establishes a Topic is alive is at the Topic level. Only publishing a message on the Topic or an explicit signal from the application to assert liveliness on the Topic will mark the Topic as being alive.
+- Publisher an be explicit by calling the assert_liveliness operations, or implicit by writing some data
+- lease time is the maximum time before node declared dead
+- When 0, it is infinite
+#### Deadline
+- Threshold for the time between messages
+- A deadline time of 0 will disable the deadline tracking
+
+More info [here](https://design.ros2.org/articles/qos_deadline_liveliness_lifespan.html)

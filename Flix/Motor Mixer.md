@@ -9,6 +9,8 @@ motors[MOTOR_REAR_LEFT]   = thrustTarget - torqueTarget.y + torqueTarget.x + tor
 motors[MOTOR_REAR_RIGHT]  = thrustTarget - torqueTarget.y - torqueTarget.x - torqueTarget.z;
 ```
 
+>[!Note]
+>x and y for torque are switched around
 
 ### Thrust
 
