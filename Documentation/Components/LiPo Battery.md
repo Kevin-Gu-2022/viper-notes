@@ -5,11 +5,11 @@
 ## Selected Battery
 - Same but in 2 pack combo: https://chinahobbyline.com/products/cnhl-gplus-series-3000mah-22-2v-6s-70c-lipo-battery-with-xt90-plug?variant=42646821175510
 - Has XT90 plug. So XT90 male to XT60 female for charger
-- [Adaptor](https://www.aliexpress.com/item/1005010093372365.html): XT6 0 F-XT90 M 5Pcs
+- [Adaptor](https://www.aliexpress.com/item/1005010093372365.html): XT60 F - XT90 M 5Pcs
 
 ## Charger
 - [HOTA D6 Pro](https://www.aliexpress.com/item/1005006358725398.html)
-- Cheaper one: https://www.aliexpress.com/item/1005004413448081.html
+- Battery charger (first option with just DC charging will do): https://www.aliexpress.com/item/1005004413448081.html
 
 # Parameters
 ## Capacity

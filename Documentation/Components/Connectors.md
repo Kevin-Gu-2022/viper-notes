@@ -9,11 +9,11 @@
 |**GH**|**Series Name**|Refers to the **JST GH Family** (1.25mm pitch).|
 |**S**|**Internal Code**|Refers to the **Shape/Form** of the shroud. "S" is the standard shrouded version.|
 |**TB**|**Packaging**|Stands for **Tape & Reel**. This tells the factory the parts come on a large plastic wheel for automated assembly machines.|
-- The corresponding connector, I think is [this](https://au.rs-online.com/web/p/wire-housings-plugs/7521734), but this Aliexpress one will also work
-	- [5/10PCS GH 1.25 2p 3p 4p 5p 6p 7P 8P Female Connector With Wire 15cm Cable GH1.25 Single Double Connector 28AWG](https://www.aliexpress.com/item/1005009390067334.html)
-- Would be ideal if wires are pre-crimped
+- The corresponding connector is [GHR-02V-S](https://au.rs-online.com/web/p/wire-housings-plugs/7521734), but this Aliexpress one will also work
+	- GH1.25 Female: 5 Pcs, Connector Type: Single head, Pins: 2P, 28 AWG, pre-crimped wires on header side
+	  https://www.aliexpress.com/item/1005009390067334.html
 - 26 AWG for 1A
-- Actually, I don't think it is either of those :(
+- Max power of Arduino Portenta X8 is [4000 mA](https://core-electronics.com.au/attachments/localcontent/ABX00049-datasheet_4359766d976.pdf), and this [blog](https://oscarliang.com/wires-connectors/#26AWG-28AWG) suggests 26AWG should be sufficient for just powering electronics 
 
 - On other side, add a TVS diode connector (1.5KE 75A). Extra margin to account for cheap component: https://www.aliexpress.com/item/32879274481.html
 - Pair with 1000µF, 50V electrolytic capacitor to perform smoothing
