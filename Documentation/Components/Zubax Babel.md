@@ -8,3 +8,5 @@
 - No echo, so just start typing
 - All commands end with a `\r\n` where newline is just an enter
 - Communicates using same SLCAN interface that is sending over ASCII'd CAN data
+
+Source the .env_slcan.sh to open Zubax interface

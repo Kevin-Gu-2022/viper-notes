@@ -48,7 +48,13 @@ export UAVCAN__NODE__ID=$(yakut accommodate)    # Pick a node-ID for Yakut autom
 echo "Auto-selected node-ID for this session: $UAVCAN__NODE__ID"
 ```
  - Do not place the downloaded script in `~/.local/bin` as `sudo` can't read it. I suggest `/usr/local/bin`
- - *Source* `env_sclan.sh`. Do not execute it with `./` as this would not save the environment variables defined 
+
+>[! Warning]
+ *Source* `env_sclan.sh`. Do not execute it with `./` as this would not save the environment variables defined. This includes the setup scripts for Yakut within the Viper repo too!
+ 
+  
+ 
+ 
  - Don't forget to set path for `.cyphal`
 
 # Operation
