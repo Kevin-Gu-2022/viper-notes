@@ -3,7 +3,7 @@
 - Don't necessarily have to setup SocketCAN on `can0`, but it is still useful
 - Can just access the serial port directly using GUI
 - [Video tutorial](https://www.youtube.com/watch?v=_nGi3y3FqvU)
-- Viper uses MTU of 8 and 1Mbps data rate. Make sure these are set under CAN > SocketCAN for the transport, otherwise parsing issues may occur
+- Viper uses MTU of 8 (for cyphal) and 1Mbps data rate. Make sure these are set under CAN > SocketCAN for the transport, otherwise parsing issues may occur
 
 ---
 

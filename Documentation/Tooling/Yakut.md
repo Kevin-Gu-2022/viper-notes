@@ -50,7 +50,8 @@ echo "Auto-selected node-ID for this session: $UAVCAN__NODE__ID"
  - Do not place the downloaded script in `~/.local/bin` as `sudo` can't read it. I suggest `/usr/local/bin`
 
 >[! Warning]
- *Source* `env_sclan.sh`. Do not execute it with `./` as this would not save the environment variables defined. This includes the setup scripts for Yakut within the Viper repo too!
+ *Source* `env_sclan.sh`. Do not execute it with `./` as this would not save the environment variables defined. 
+ This includes the setup scripts for Yakut within the Viper repo too!!! (though don't source for just the setup_vcan.sh script)
  
   
  
@@ -80,6 +81,8 @@ This section lists all active devices currently detected on the bus.
 | **VSSC**   | Vendor-Specific Status Code (usually `0`).                   |
 | **Uptime** | Time since power-on (**Days:Hours:Minutes:Seconds**).        |
 | **Name**   | The human-readable string identifying the hardware/software. |
+- **pub/cln:** publisher/client
+- **sub/srv:** subscriber/server
 
 **Current Nodes:**
 - **63:** `org.opencyphal.yakut.monitor` (The monitor tool itself).
