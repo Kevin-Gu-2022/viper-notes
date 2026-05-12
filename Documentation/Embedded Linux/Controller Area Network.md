@@ -1,0 +1,12 @@
+# Overview
+- Serial communication with CAN high and low lines
+- Bus topology so no masters. Also less wires
+- Half duplex!
+- Asynchronous
+- Built in CRC
+- Each message contains an ID + data similar to I2C
+- Differential signal between 2 lines means no bit flips due to interference
+	- Wires next to each other so interference affects both in same way
+	- **Recessive (Logical 1):** Both wires are at approximately 2.5V (Differential voltage $\approx 0V$).
+	- **Dominant (Logical 0):** CAN_H goes up (~3.5V) and CAN_L goes down (~1.5V).
+	- A dominant bit always "wins" over a recessive bit on the bus.
