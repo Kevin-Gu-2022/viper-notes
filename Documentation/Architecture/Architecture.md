@@ -1,3 +1,5 @@
+# Overview
+https://www.youtube.com/watch?v=PlKeFj5teo4
 # Architecture Description
 - The Arduino Portenta X8 has 2 main chips, the i.MX 8 Mini that has the embedded Linux, and the STM32H747 that is the real time core
 - Main issues are that the IMU is connected to the i.MX, which is *not* real time. 

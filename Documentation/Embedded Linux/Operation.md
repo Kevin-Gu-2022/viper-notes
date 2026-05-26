@@ -69,30 +69,12 @@ docker build -t x8-slim-dev .
 docker run -it \
     --privileged \
     --net=host \
+    --name container_name \
     -v /home/shell/my_project:/app \
     x8-dev-container
 ```
 ### Exiting
-- Docker container continues to run i used `exec`
+- Docker container continues to run if used `exec`
 	- To stop do `docker stop name_of_container`
-- If `docker run`, Ctrl+D stops  the container
-
-# CAN Interface
-- Control CAN interface through `ip` command, part of `iproute2`
-```bash
-ip link set can0 type can bitrate 1000000 # Bitrate needs to be set first
-ip link set can0 up/down # To turn on/off interface
-```
-
-To see **summary** of statistics:
-```bash
-ip -s link [show can0]
-```
-
-To see details about CAN bus:
-```bash
-# Detailed CAN statistics including error counters
-ip -details -statistics link show can0
-```
-
-- Can set `restart-ms` to automatically bring interface back up after errors
+	- This command essentially attaches another shell session to the container
+- If `docker run`, Ctrl+D stops  the container, since the process with PID 1 (i.e. bash) ends

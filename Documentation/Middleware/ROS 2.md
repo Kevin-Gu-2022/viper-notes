@@ -37,3 +37,8 @@ source install/setup.bash
 - A deadline time of 0 will disable the deadline tracking
 
 More info [here](https://design.ros2.org/articles/qos_deadline_liveliness_lifespan.html)
+
+## Parameters
+- ROS 2 supports adding multiple parameters into node, allowing for runtime configuration of certain parameters
+- Via CLI: `ros2 param set /node_name parameter_name value`
+- Or better through GUI: `rqt` directly into terminal
