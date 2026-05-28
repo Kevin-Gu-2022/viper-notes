@@ -21,6 +21,7 @@
 		- `motor.resistance`
 		- `motor.inductance_dq`
 		- `motor.flux_linkage`
+- See [Telega docs](https://telega.zubax.com/commands/drive.html) on controlling Myxa ESCs with Cyphal
 
 ## Motor Control
 ### Run Strategies
@@ -29,3 +30,14 @@
 
 ### Control Modes
 - Velocity control mode: Uses INDI controller to control velocity in radians/second
+
+
+> [!Tip]
+> Make sure the power supply's current is not capped otherwise you may see the ESCs constantly restarting
+
+
+> [!Config Dump]
+> Dump config of motors into a `yaml` file which can later be imported:
+> ```bash
+> y rl 125 | y rb 123-126 > myxa_config.yaml
+> ```

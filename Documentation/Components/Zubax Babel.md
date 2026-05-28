@@ -2,7 +2,7 @@
 - [Datasheet](https://files.zubax.com/products/com.zubax.babel/Zubax_Babel_Datasheet.pdf)
 - Need SocketCAN to work. See setup with [[Yakut]]
 - Basically, this device translates the binary of CAN into an ASCII based protocol called SLCAN. This protocol is used to transfer the CAN data to the PC. 
-- On the PC, SLCAND converts it back to binary, exposing it via SocketCAN networking stack (accessible over `can0` network interface). Yakut then reads from this `can0` (if choose to use SocketCAN, with the benefit that other processes can read from this source simultaneously). 
+- On the PC, SLCAND converts it back to binary, exposing it via SocketCAN networking stack (accessible over `can0` network interface). Yakut then reads from this `can0` (if choose to use SocketCAN, with the benefit that other processes can read from this source simultaneously), unlike traditional serial ports which only allow one process to read it
 
 # Usage
 If you are using Cyphal/CAN with an SLCAN-compatible USB-CAN adapter, such as [Zubax Babel](https://zubax.com/babel), paste the following snippet into a file named `env_slcan.sh`:

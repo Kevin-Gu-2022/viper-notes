@@ -42,3 +42,6 @@ More info [here](https://design.ros2.org/articles/qos_deadline_liveliness_lifesp
 - ROS 2 supports adding multiple parameters into node, allowing for runtime configuration of certain parameters
 - Via CLI: `ros2 param set /node_name parameter_name value`
 - Or better through GUI: `rqt` directly into terminal
+- In Humble, best way is to subscribe to `/parameter_events` and filter for relevant parameter changes. No `add_post_set_parameter_callback` which actually changes the values.
+	- Tried to change the values using `add_on_set_parameter_callback` but doesn't appear to work
+- https://github.com/ros2/ros2_documentation/issues/2979

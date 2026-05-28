@@ -21,6 +21,7 @@ gz sim ... # Newer versions
 ros2 run ros_gz_bridge parameter_bridge  X3/gazebo/command/motor_speed@actuator_msgs/msg/Actuators]gz.msgs.Actuators
 	```
 - Make sure the message types between ROS 2 and Gazebo match this [table](https://github.com/gazebosim/ros_gz/blob/ros2/ros_gz_bridge/README.md#example-1a-ignition-transport-talker-and-ros-2-listener)
+- When using with YAML and launch file, the topics only become visible in `ign topic -l` when play is pressed on the simulation 
 
 
 ## Resetting Pose

@@ -53,9 +53,6 @@ echo "Auto-selected node-ID for this session: $UAVCAN__NODE__ID"
  *Source* `env_sclan.sh`. Do not execute it with `./` as this would not save the environment variables defined. 
  This includes the setup scripts for Yakut within the Viper repo too!!! (though don't source for just the setup_vcan.sh script)
  
-  
- 
- 
  - Don't forget to set path for `.cyphal`
 
 # Operation
@@ -90,17 +87,11 @@ This section lists all active devices currently detected on the bus.
 ## 2. Message Traffic (MESSG Section)
 
 This matrix displays **Subject IDs** (data topics) and their publication frequencies.
-
 - **Rows (Left IDs):** These are the **Subject IDs** (e.g., 113, 114, 116).
-    
 - **Columns (63, 100):** Data mapped to specific Node IDs.
-    
 - **Cell Values:** Represent the frequency in **Hertz (Hz)**.
-    
     - _Example:_ Node 100 is publishing Subjects 113, 114, and 116 at **100 Hz**.
-        
     - _Example:_ `0` indicates the node knows the port but isn't currently sending/receiving.
-        
 ### Standard Subject IDs
 
 - **7509 / 7510:** Standard Cyphal Heartbeat and Port List messages. These are mandatory for a healthy node.
@@ -130,3 +121,5 @@ The bottom section provides an aggregate health check of the bus.
 > **Activity Indicators:** A `.` or blinking character indicates sporadic/low-frequency activity.
 > 
 > **The "Missing" Bytes:** The `TOTAL` bandwidth (3 KB/s) is higher than the `MESSG` bandwidth (2 KB/s) because it accounts for protocol overhead: CAN headers, tail bytes, CRCs, and padding.
+
+
