@@ -20,12 +20,26 @@ nmcli --ask dev wifi connect network-ssid
 ## Original Image
 **Annoyingly, the custom image does not seem to expose CAN interface**. CAN is technically wired to the STM32, so additional drivers are needed, which I believe got removed somewhere along the way.
 
+>[!Warning]
+Flashing custom Yocto builds does not use this method
+
 To return to original image by Arduino, follow this [guide](https://docs.arduino.cc/tutorials/portenta-x8/image-flashing/#:~:text=Update%20Using%20uuu%20Flashing%20Tool). Remember to flip the switches to ON side when flashing and then flip back when finished.
+
+TLDR: Extract the 2 `gz` compressed files: One is the flash tool `uuu` and the other is the image. Then, run:
+```bash
+cd mfgtool-files-portenta-x8
+sudo uuu full_image.uuu
+```
 
 Multiple old versions available. OS version 746 seems to work: https://docs.arduino.cc/tutorials/portenta-x8/x8-firmware-release-notes/#:~:text=OS%20Image%20746
 >[!Note]
 > CAN bus was not working with the newer versions (maybe...) The Arduino Portenta might've just not been physically connected to board properly. Haven't had time to flash back to newer versions to test
 
+### Arduino Image Versions
+- Version 746 works both ways, but times out occasionally.
+- Version 861: Cansend from Pika Spark works, but can't receive anything
+- Latest Version 934: No sending or receive
+- Version 881: Works both ways, but times out more often than Version 746
 # Docker Containers
 - If you want to re-enter container after exiting a container, just do:
 	```bash
@@ -72,6 +86,13 @@ docker run -it \
     --name container_name \
     -v /home/shell/my_project:/app \
     x8-dev-container
+```
+
+Don't worry if encounter this error, just means you've just connected to WiFi and system time hasn't synced yet. Just run command again and it will work.
+```bash
+Sending build context to Docker daemon  6.144kB
+Step 1/10 : FROM docker.io/arm64v8/ros:humble-ros-base
+Get "https://registry-1.docker.io/v2/": x509: certificate has expired or is not yet valid: current time 2022-04-28T17:46:01Z is before 2025-09-24T00:00:00Z
 ```
 ### Exiting
 - Docker container continues to run if used `exec`

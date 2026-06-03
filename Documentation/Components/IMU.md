@@ -1,2 +1,2 @@
 - Inertial measurement unit of Pika Spark is BNO085
-- 
+- Driver uses the now deprecated `SysGPIO` functions. No longer part of Linux

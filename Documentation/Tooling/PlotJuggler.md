@@ -1,9 +1,5 @@
 - Real time visualisation software
 - Easier if download through ROS, comes with the ROS plugins
-- Launch with: 
-- ```bash
-  ros2 run plotjuggler plotjuggler
-  ```
 
 # Dependency Issues
 If on ROS 2 Humble and Ubuntu 22.04, you may run into a dependency issue with mismatched versions for a package.
@@ -28,7 +24,22 @@ Downgrade the offending package (I'm pretty sure this is what I did. Of course, 
 sudo apt-get install libcom-err2=1.46.5-2ubuntu1.1
 ```
 
-# Usage with Yakut
+# Usage
+- Launch with: 
+- ```bash
+  ros2 run plotjuggler plotjuggler
+  ```
+Alternatively, add a desktop icon to `~/.local/share/applications/plotjuggler.desktop:
+```ini
+[Desktop Entry]
+Name=PlotJuggler
+Comment=Real-time time series visualization tool
+Exec=bash -c "source /opt/ros/humble/setup.bash && ros2 run plotjuggler plotjuggler"
+Terminal=false
+Type=Application
+Categories=Utility;Application;
+```
+## Usage with Yakut
 - Subscribe to the relevant topic ID, and pipe it directly to `netcat` over UDP
 ```bash
 y sub 1000:zubax.telega.dq | nc -u localhost 9870

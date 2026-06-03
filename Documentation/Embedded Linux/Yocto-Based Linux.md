@@ -108,6 +108,13 @@ Interestingly, X11 is still there after running the `grep` command:
 PACKAGECONFIG=" acl x11 nls "
 ```
 
+# Flashing
+- Follow this [guide](https://docs.lxrobotics.com/en/products/pika-spark/tutorials/flash-yocto-image) to flash image: essentially, install `uuu`, then:
+```bash
+uuu -b emmc_all tmp/deploy/images/portenta-x8/pika-spark-base-image-portenta-x8.rootfs.wic.zst
+```
+
+- May need to set up `udev` rules if first time so that you can recognise the new device.
 # Patching with `PREEMPT_RT`
 - https://community.nxp.com/t5/i-MX-Processors-Knowledge-Base/i-MX-9-How-to-Use-the-Preempt-RT-Kernel-in-the-Standard-Yocto/ta-p/1956566?profile.language=en
 
