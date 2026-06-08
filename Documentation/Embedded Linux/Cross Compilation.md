@@ -120,4 +120,4 @@ docker run -it \
 --privileged \  
 viper-dev-image:v1
 ```
-Make sure the tag matches
+Make sure the tag matches what you gave it on the host computer.

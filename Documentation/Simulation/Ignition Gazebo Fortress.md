@@ -32,3 +32,9 @@ where the `/world/quadcopter_teleop/set_pose` must be what world name is.
 
 >[!Tip]
 >Use `ign service -l | grep pose` to find correct string
+
+
+# Running with Launch File
+- Note that when the run with launch file, i.e. `viper-sim.py`, it isn't running from the dev `gazebo` directory
+	- It gets copied to `install/viper/share` folder
+	- Make sure to `colcon build` after any changes to update the `sdf` file used
