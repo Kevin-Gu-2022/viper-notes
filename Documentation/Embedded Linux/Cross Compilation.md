@@ -4,7 +4,7 @@
 - Work with Docker with simulated arm64 via QEMU on host machine, which is typically x86_64
 
 ## Setup
-Install emulator via Docker:
+Install emulator on host machine via Docker:
 ```bash
 docker run --privileged --rm tonistiigi/binfmt --install all
 ```
@@ -23,7 +23,7 @@ docker build --platform linux/arm64 -t your_image_name .
 - `amd64` and `x86_64` are same thing
 - `aarch64` and `amd64` are equivalent
 
-## Typical Workflow
+## Typical Workflow - Sending Entire Image
 1. Setup a base Dockerfile for development, something like this:
 ```Dockerfile
 # This Dockerfile is only the base dev workspace
@@ -78,6 +78,8 @@ sudo docker build -t <tag_name> .
 ```bash
 sudo docker run -it \
   --name <container_name> \
+  --network host \
+  --privileged \
   <image_name> \
   bash
 ```
@@ -121,3 +123,44 @@ docker run -it \
 viper-dev-image:v1
 ```
 Make sure the tag matches what you gave it on the host computer.
+
+> [!Note]
+> The images you see in `docker images` are only the ones created directly from Dockerfile or from `docker commit`. They are ***templates*** for a container!!
+
+- Note that you'd be unable to run any CAN related stuff within the container. I suspect it's to do with the emulation layer messing stuff up
+
+
+## Alternative Workflow - Sharing `install` Directory
+1. Compile in container using QEMU emulation
+2. Copy out he `install` directory from ARM Docker container using `docker cp`
+3. `adb push` the `install` directory directly to Pika Spark
+	`docker cp install/ <container_name>:/tmp/colcon_ws/install`
+>[!Tip]
+>Adding `/` after the directory will copy the stuff within that directory. No `/` is just the entire directory including `install`
+
+4. Start the ROS Humble container from image
+	`docker run -it --privileged --net=host arm64v8/ros:humble-ros-base`
+5. Run node as normal after sourcing environments. 
+
+Use the following minimal ROS 2 Humble container:
+```Dockerfile
+FROM --platform=linux/arm64 docker.io/arm64v8/ros:humble-ros-base
+
+# Basic dev tools + colcon + ROS tools
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    cmake \
+    git \
+    python3-pip \
+    python3-colcon-common-extensions \
+    python3-rosdep \
+    python3-vcstool \
+    ros-humble-actuator-msgs \
+    vim \
+    can-utils \
+    iproute2 \
+    sudo \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /tmp
+```

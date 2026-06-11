@@ -15,8 +15,6 @@ mkdir yocto
 cd yocto
 YOCTO_DIR=$(pwd)
 ```
-
-
 # Building Image
 
 Clone required repositories. This is NXP's curated snapshot of Yocto with their own layers bundled too, i.e. `meta-imx`. `repo sync` pulls in the recipes that will be used to build.
@@ -107,7 +105,6 @@ Interestingly, X11 is still there after running the `grep` command:
 ```
 PACKAGECONFIG=" acl x11 nls "
 ```
-
 # Flashing
 - Follow this [guide](https://docs.lxrobotics.com/en/products/pika-spark/tutorials/flash-yocto-image) to flash image: essentially, install `uuu`, then:
 ```bash
@@ -117,10 +114,15 @@ uuu -b emmc_all tmp/deploy/images/portenta-x8/pika-spark-base-image-portenta-x8.
 - May need to set up `udev` rules if first time so that you can recognise the new device.
 # Patching with `PREEMPT_RT`
 - https://community.nxp.com/t5/i-MX-Processors-Knowledge-Base/i-MX-9-How-to-Use-the-Preempt-RT-Kernel-in-the-Standard-Yocto/ta-p/1956566?profile.language=en
-
+- Too difficult, gave up lol
 # Entering Docker Build Container
 ```bash
 docker start yocto-nxp-scarthgap
 docker exec -it yocto-nxp-scarthgap bash
 source setup-environment bld-xwayland
 ```
+
+# Current Image
+- Using the `pika-spark-ros-jazzy-image` that Alex has built
+- Need to load manually compiled device tree blob sent in Telegram into `/boot/devicetree` to activate `spidev` needed for IMU driver
+- 

@@ -2,6 +2,7 @@
 - Lenovo MAC: 18:1D:EA:33:CD:26
 
 - The PS3 controller provided is a clone that switches itself to a Xbox when it detects it is connected to a PC. Generally Xbox controllers have better support
+- Use the black controller with Ubuntu 22.04
 ## Wake-up Controller
 
 >[!Note]
@@ -197,6 +198,9 @@ ros2 topic echo /joy_node
 ```
 - Need to have the joy_node running for the velocity to read
 - No need for remapping here
+- `ros2 topic hz /joy` gives the frequency at which commands are published
+	- Black controller uses a variable rate of between 15 to 20 Hz
+	- When joystick used, publishing rate increases up to 23 Hz
 ## `/cmd_vel` Topic
 
 Remap using yaml file. Only for `/cmd_vel`

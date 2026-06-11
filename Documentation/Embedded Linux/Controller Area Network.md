@@ -36,3 +36,5 @@ ip -details -statistics link show can0
 >  ```bash
 >  sudo ip link set can0 txqueuelen 256
 >  ```
+
+- Unfortunately, buffer space still seems to run out after 40-ish minutes

@@ -38,3 +38,36 @@ where the `/world/quadcopter_teleop/set_pose` must be what world name is.
 - Note that when the run with launch file, i.e. `viper-sim.py`, it isn't running from the dev `gazebo` directory
 	- It gets copied to `install/viper/share` folder
 	- Make sure to `colcon build` after any changes to update the `sdf` file used
+
+# Quadcopter Simulation
+- Ripped an existing quadcopter model off of Gazebo Fuel
+- Motors commands are scaled by factor of 10. This is just to ensure numerical stability during simulation, i.e. less small floating point errors
+- Maintains its altitude at around 660 rad/s. Still falls really slowly though
+
+- If you wish to launch the model directly from command line without ROS 2 bridge, then `cd` into `gazebo` directory and run:
+
+```bash
+ign gazebo worlds/world.sdf
+```
+- This will run with the `sdf` files you see in the `gazebo` dev directory. If simulation launched with `viper-sim.py`, it's actually running from the `install/viper/share` directory. Make sure to `colcon build` to copy it over.
+
+- Then in another terminal, run the following to make drone fly:
+
+```bash
+ign topic -t /X3/gazebo/command/motor_speed --msgtype ignition.msgs.Actuators -p 'velocity:[700, 700, 700, 700]'
+```
+- Flight controller will invalidate this command though, as I've made it continuously publish 0 to the Gazebo topic when drone not armed
+	- So, just run world independently if want to test out Gazbeo
+
+
+Reset pose:
+```bash
+ign service -s /world/quadcopter_teleop/set_pose \
+    --reqtype ignition.msgs.Pose \
+    --reptype ignition.msgs.Boolean \
+    --req "name: 'viper', position: {x: 0, y: 0, z: 3}, orientation: {x: 0, y: 0, z: 0, w: 1}" \
+    --timeout 2000
+```
+
+- `IGN_GAZEBO_RESOURCE_PATH` curently points to `gazebo` directory. This allows launching of Gazebo simulation independently by just calling `ign gazbeo worlds/world.sdf` from `gazebo` directory.
+=

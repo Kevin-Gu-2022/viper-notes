@@ -36,18 +36,19 @@ Create a file called `env_slcan.sh`
 ```bash
 if ! [ -e /sys/class/net/slcan0 ]; then
     # Install this script to your PATH: https://gist.github.com/pavel-kirienko/32e395683e8b7f49e71413aebf5e1a89
-    sudo setup_slcan -r /dev/serial/by-id/usb-Zubax*Babel*
+    sudo setup_slcan -r --baudrate 115200 --speed-code 5 /dev/serial/by-id/usb-Zubax*Babel*
 fi
 export UAVCAN__CAN__IFACE='socketcan:slcan0'
 if [ -e /sys/class/net/slcan1 ]; then
     export UAVCAN__CAN__IFACE="$UAVCAN__CAN__IFACE socketcan:slcan1"
 fi
-export UAVCAN__CAN__MTU=8
-export UAVCAN__CAN__BITRATE='1000000 1000000'   # Arbitration and data segment bit rates.
+export UAVCAN__CAN__MTU=8  # Max for classical CAN
+export UAVCAN__CAN__BITRATE='250000 250000'   # Arbitration and data segment bit rates.
 export UAVCAN__NODE__ID=$(yakut accommodate)    # Pick a node-ID for Yakut automatically.
 echo "Auto-selected node-ID for this session: $UAVCAN__NODE__ID"
 ```
  - Do not place the downloaded script in `~/.local/bin` as `sudo` can't read it. I suggest `/usr/local/bin`
+ - Above script sets the CAN bitrate to 25000 bits/s
 
 >[! Warning]
  *Source* `env_sclan.sh`. Do not execute it with `./` as this would not save the environment variables defined. 

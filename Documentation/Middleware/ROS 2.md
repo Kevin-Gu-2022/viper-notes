@@ -45,3 +45,12 @@ More info [here](https://design.ros2.org/articles/qos_deadline_liveliness_lifesp
 - In Humble, best way is to subscribe to `/parameter_events` and filter for relevant parameter changes. No `add_post_set_parameter_callback` which actually changes the values.
 	- Tried to change the values using `add_on_set_parameter_callback` but doesn't appear to work
 - https://github.com/ros2/ros2_documentation/issues/2979
+
+
+# package.xml
+Make sure to include this line, otherwise, package won't be found
+```xml
+<export>
+  <build_type>ament_cmake</build_type>
+</export>
+```

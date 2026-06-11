@@ -9,19 +9,20 @@ sudo nmcli con modify MyHotspot ipv4.method manual ipv4.addresses 192.168.50.1/2
 
 # Set Security
 sudo nmcli con modify MyHotspot wifi-sec.key-mgmt wpa-psk
-sudo nmcli con modify MyHotspot wifi-sec.psk "Pika"
+# Set password
+sudo nmcli con modify MyHotspot wifi-sec.psk "Password,1"
 
-# Bring the connection up
+# Bring the connection up. Similarly, 'down' to shut hotspot down. Should automatically switch to previous WiFi
 sudo nmcli con up MyHotspot
 ```
 - Tried using DHCP, but ran into some issue
 - Because it is static IP, there's a bit more configuration on the client side too:
 	- **IP Address:** `192.168.50.50` (Any number between 2 and 254 is fine)
 	- **Gateway:** `192.168.50.1` (This is your Portenta's address)
-	- **Network Prefix Length:** `24`
+	- **Network Prefix Length / Netmask:** `24`
 	- **DNS 1:** `8.8.8.8`
+- On Ubuntu, the only way to access settings page in GUI seems to require entering password first
 - Once the client is connected, we can share ROS messages across this interface
-
 
 If something goes wrong, can always reset the network profile like this:
 ```bash
@@ -35,3 +36,17 @@ To see details about interfaces:
 ```bash
 nmcli device
 ```
+
+# Troubleshooting
+- List out topics on the 2 machines to see of they are communicating
+```bash
+ros2 topic list
+```
+
+- If errors persist, could try explicitly setting the domain ID to be same on both machines:
+```bash
+export ROS_DOMAIN_ID=0
+```
+
+- Time may go out of sync when switch back to WiFi. Check with `date`. Force synchronisation with `timedatectl` command, then `reboot`
+- Remember, no WiFi when hotspot is on. This means no package downloads

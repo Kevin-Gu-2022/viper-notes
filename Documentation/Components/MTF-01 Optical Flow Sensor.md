@@ -1,6 +1,7 @@
 - Flow sensor that communicates via serial
-	- Multiple protocols, currently it's on the Ardupilot protocol, I think. But this can easily be changed by using a USB-TTL adaptor and changing the protocol through this Windows [executable](https://github.com/micoair/MTF-01_USER_MANUAL)
-	- The sensor needs 5V supply, but uses 3.3V logic, so you'd need to solder the red wire separately
-		- CyphalPicoBase has 5V pin
-	- I've stripped one of the connectors and was planning on soldering them to the output pins of the Pika Spark Debug adaptor. The 5V will still need to be separate though as the debug adaptor uses 3.3V
-	- I have tested using the 3.3V as power, but it is most definitely not reliable. Power cuts out frequently, as seen by blue status LED
+- Supports multiple protocols, currently it's on the Ardupilot protocol, I think. But this can easily be changed by using a USB-TTL adaptor and changing the protocol through this Windows [executable](https://github.com/micoair/MTF-01_USER_MANUAL)
+- The sensor needs 5V supply, but uses 3.3V logic, so you'd need to solder the red wire separately
+	- CyphalPicoBase has 5V pin
+- I've stripped one of the connectors and was planning on soldering them to the output pins of the Pika Spark Debug adaptor. The 5V will still need to be separate though as the debug adaptor uses 3.3V
+- I have tested using the 3.3V as power, but it is most definitely not reliable. Power cuts out frequently, as seen by blue status LED
+- Select the custom protocol Micolink. More details [here](https://micoair.com/docs/decoding-micolink-messages-from-mtf-01/)
