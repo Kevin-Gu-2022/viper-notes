@@ -35,7 +35,20 @@ y pub -T 0.1 113:zubax.primitive.real16.Vector4 "[10, 10, 10, 30]"
 ### Run Strategies
 - Use ramp spin-up
 - Passive spin-up not relevant to Viper
+#### Ramp Spinup
+Can change the default of:
+```YAML
+drive.runner.0_ramp.spinup_current_pu: [0.5, 0.5]
+drive.runner.0_ramp.spinup_duration: [0.20000000298023224, 0.4000000059604645, 1.5, 0.0020000000949949026, 0.014999999664723873, 0.6000000238418579]
+```
 
+to this:
+```yaml
+drive.runner.0_ramp.spinup_current_pu: [0.3, 0.3]
+drive.runner.0_ramp.spinup_duration:   [0.1, 0.0, 0.4, 0.002, 0.015, 0.6]
+```
+
+Apparently more suitable for direct-drive propellers for faster spin-up, though I haven't found a considerable difference.
 ### Control Modes
 - Velocity control mode: Uses INDI controller to control velocity in radians/second
 

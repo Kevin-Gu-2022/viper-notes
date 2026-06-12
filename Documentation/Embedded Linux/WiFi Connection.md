@@ -1,3 +1,6 @@
+>[!Note]
+>As long as both devices are on same WiFi network, they should be able to communicate, though setting up hotspot would reduce hops, i.e. latency
+
 - Setup a static-IP WiFi hotspot on the Pika Spark: 
 
 ```bash
@@ -37,6 +40,9 @@ To see details about interfaces:
 nmcli device
 ```
 
+- If computer and Pika Spark are on same LAN network, then they will be able to share messages
+- If Pika Spark's hotspot is turned on, and computer is not connected, they won't be able to share messages
+- Obviously connecting directly to Pika Spark will give better latency, as less hops across network
 # Troubleshooting
 - List out topics on the 2 machines to see of they are communicating
 ```bash
