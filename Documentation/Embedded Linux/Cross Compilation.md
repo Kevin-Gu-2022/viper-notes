@@ -162,5 +162,16 @@ RUN apt-get update && apt-get install -y \
     sudo \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /tmp
+WORKDIR /tmp/ws
 ```
+
+Even better would be to mount the volume to Docker when running the image for first time. This command starts a container, builds the program, then deletes the container.
+```bash
+# Must be run in root of ROS 2 workspace
+docker run --rm \
+    -v $PWD:/tmp/ws \
+    ros-humble-aarch64 \
+    bash -c "cd /tmp/ws && source /opt/ros/humble/setup.bash && colcon build [--packages-select package-name]"
+```
+
+After build, because volume is mounted, you can just push the install directory onto Pika Spark and copy into the ROS Humble Docker in it. Note that this will mess up any existing installs that use the x86 architecture. Probably a good idea to delete any existing `build` or `install` directories to avoid path issues.

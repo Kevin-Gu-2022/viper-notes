@@ -1,0 +1,8 @@
+- Need to connect the charger to a DC power supply via the DC Input
+	- Only have alligator to DC barrel connector, so you need something to expose the metal bit from the power supply so you have something for the alligator clips to clip on to. I used my own multimeter leads
+- PLEASE read the instruction manual carefully
+- NEVER leave the charging battery unattended, it may catch fire otherwise
+- Connect the balance leads first then the two thick battery leads. Do in reverse when unplugging
+	- Because the XT90 connectors are a bit tight, it is good idea to connect the adaptor first, then plug into the output port
+- The charger also comes with an internal resistance measurer
+- Aliexpress [link](https://www.aliexpress.com/item/1005004413448081.html)

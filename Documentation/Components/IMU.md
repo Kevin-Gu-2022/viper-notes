@@ -5,8 +5,11 @@
 - Driver uses the now deprecated `SysGPIO` functions. No longer part of Linux
 	- if you use older versions of image from Arduino website, the ROS 2 IMU driver will still work, but the latest `pika-spark-ros-jazzy-image` will not run. The `/sys/class/gpio` directories don't even exist
 	- Driver could be ported to use `gpiod`, ~~but latest image does not support `/dev/spi0.0`. Apparently Alex has fixed the device tree that includes this. Still waiting for new image. My Yocto image does not seem to work.~~
-		- `/dev/spidev0.0` works now thanks to the device tree blob
+		- `/dev/spidev1.0` works now thanks to the device tree blob
 
+> [!Note]
+If you reflash Pika Spark, the device tree blob must be added again: 
+`su`, then, `mv ov_carrier_pika_spark_base.dtbo /boot/devicetree/`. Then, reboot
 # Changes to Driver
 - Don't think you need to touch any of the pins, other than making sure the nBOOT pin is tied high
 - `gpioset` does not keep pin down/up once returned, so need to keep running in background
