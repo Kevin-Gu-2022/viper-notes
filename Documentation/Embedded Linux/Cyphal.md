@@ -4,9 +4,6 @@
 - Broke off from UAVCAN project - this is v1 of it, while v0 is now called DroneCAN, which is more widely adopted. See [comparison](https://forum.opencyphal.org/t/cyphal-vs-dronecan/1814)
 - CAN is the data-link layer of intravehicular comms, while Cyphal is the protocol that takes care of the actual messaging
 - Cyphal is transport agnostic, allowing heterogeneous transport redundancy, where multiple physical transports with different failure modes (e.g. both CAN and a wireless link)
-
-
-
 ### Application Layer
 - The applications that developers develop on top of Cyphal, e.g. flight controller for UAV
 - All application-layer Cyphal nodes must implement the heartbeat message
@@ -18,3 +15,10 @@
 
 - Register access is service request and response
 - Typical messaging is publish subscribe
+
+# Usage
+## Creating a Publisher
+```cpp
+  _setpoint_velocity_pub_1 = _node_hdl.create_publisher<zubax::primitive::real16::Vector4_1_0>(SETPOINT_VELOCITY_ID_1, 1*1000*1000UL);  // 1 second timeout
+```
+- Above instantiates the Publisher with `Port_ID` and `timeout_us`
