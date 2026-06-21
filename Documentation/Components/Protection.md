@@ -5,3 +5,5 @@
 	- 2 1000uF capacitors in parallel for 7 inch propellers
 - Apparently, TVS diodes, don't do too much: https://oscarliang.com/using-tvs-diode-in-fpv-drone/
 - Using LTSpice, a 50 ms rectangular spike at 40A only raises voltage to 22.276V, which is consistent with Kirchhoff's Voltage Law
+- However, if there is no battery present, with just the 4 capacitors, system can easily reach 450V with just 50ms rectangular spike
+	- 1 ms spike increases it by around 9V 

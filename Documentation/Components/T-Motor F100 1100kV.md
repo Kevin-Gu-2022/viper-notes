@@ -1,4 +1,4 @@
-- [Testing results](https://www.t-hobby.com/products/fpv-brushless-motor-cinematic-drones-f100-2810)
+- Official Specs [here](https://tmotorhobby.com/goods-1150-T-MOTORHOBBY+F100+2810+Long+Range+Cinematic+Brushless+Motor+-+1100KV1350KV.html)
 - Motor datasheet suggest 6S 5200Mah 75C battery
 - Kv: 1100Kv
 - Configuration: 12N14P
