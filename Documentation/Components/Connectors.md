@@ -15,5 +15,3 @@
 - 26 AWG for 1A
 - Max power of Arduino Portenta X8 is [4000 mA](https://core-electronics.com.au/attachments/localcontent/ABX00049-datasheet_4359766d976.pdf), and this [blog](https://oscarliang.com/wires-connectors/#26AWG-28AWG) suggests 26AWG should be sufficient for just powering electronics 
 
-- On other side, add a TVS diode connector (1.5KE 75A). Extra margin to account for cheap component: https://www.aliexpress.com/item/32879274481.html
-- Pair with 1000µF, 50V electrolytic capacitor to perform smoothing
