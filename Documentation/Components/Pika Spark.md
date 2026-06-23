@@ -14,3 +14,8 @@
 # Power
 - In PoDL power class 12
 - See description of what PoDL is in [datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/ltc9111.pdf) for LTC9111 used on Pika Spark
+
+# Wifi & Bluetooth
+- Uses the Murata 1DX chip. More info here:
+ https://www.murata.com/en-GB/products/connectivitymodule/wi-fi-bluetooth/overview/lineup/type1dx
+- 65 Mbps for WiFi and 3 Mbps for Bluetooth
