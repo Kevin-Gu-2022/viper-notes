@@ -29,3 +29,10 @@ p = 6.0
 	- At first, the quadcopter will follow the user command, i.e. gain=1
 	- At a certain point, the quadcopter will no longer follow command, and just remain stationary, similar to signal being completely attenuated
 	- This bandwidth can be calculated from rise time: $$f_{BW}=\frac{0.35}{t_{r}}$$
+- Goal is to make it stay at whatever orientation is given by joystick
+- Have found it not very effective when thrust increased...
+- Two targets: tracking (how close it tracks to joystick), as well as disturbance rejection (e.g. mass off centre, wind, prods)
+
+## Yaw
+- Test results are with 0 yaw
+- Though I changed it to use non-zero otherwise, yaw drifts when disturbance
