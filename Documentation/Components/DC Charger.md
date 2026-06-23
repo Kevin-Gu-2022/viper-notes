@@ -6,3 +6,4 @@
 	- Because the XT90 connectors are a bit tight, it is good idea to connect the adaptor first, then plug into the output port
 - The charger also comes with an internal resistance measurer
 - Aliexpress [link](https://www.aliexpress.com/item/1005004413448081.html)
+- Max 5C charging

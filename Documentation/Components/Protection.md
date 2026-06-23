@@ -1,0 +1,9 @@
+- Could potentially add a TVS diode connector (1.5KE 75A). Extra margin to account for cheap component: https://www.aliexpress.com/item/32879274481.html
+- Pair with 1000µF, 50V electrolytic capacitor to perform smoothing
+- Really good blog by Oscar Liang regarding capacitor selection: https://oscarliang.com/capacitors-mini-quad/
+	- suggests 50V for 6S batteries
+	- 2 1000uF capacitors in parallel for 7 inch propellers
+- Apparently, TVS diodes, don't do too much: https://oscarliang.com/using-tvs-diode-in-fpv-drone/
+- Using LTSpice, a 50 ms rectangular spike at 40A only raises voltage to 22.276V, which is consistent with Kirchhoff's Voltage Law
+- However, if there is no battery present, with just the 4 capacitors, system can easily reach 450V with just 50ms rectangular spike
+	- 1 ms spike increases it by around 9V 
