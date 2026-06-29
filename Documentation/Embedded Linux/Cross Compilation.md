@@ -23,7 +23,7 @@ docker build --platform linux/arm64 -t your_image_name .
 - `amd64` and `x86_64` are same thing
 - `aarch64` and `amd64` are equivalent
 
-## Typical Workflow - Sending Entire Image
+## Workflow Option 1 - Sending Entire Image
 1. Setup a base Dockerfile for development, something like this:
 ```Dockerfile
 # This Dockerfile is only the base dev workspace
@@ -130,17 +130,23 @@ Make sure the tag matches what you gave it on the host computer.
 - Note that you'd be unable to run any CAN related stuff within the container. I suspect it's to do with the emulation layer messing stuff up
 
 
-## Alternative Workflow - Sharing `install` Directory
-1. Compile in container using QEMU emulation
-2. Copy out he `install` directory from ARM Docker container using `docker cp`
-3. `adb push` the `install` directory directly to Pika Spark
+## Workflow Option 2 - Manually Compiling in Container and Sharing `install` Directory
+This method requires QEMU to emulate the arm64 arcitecture. Install using this command:
+```bash
+docker run --privileged --rm tonistiigi/binfmt --install all
+```
+
+1. Build Docker image and run it and copy data into the Docker container described below
+2. Compile in container using QEMU emulation
+3. Copy out the `install` directory from ARM Docker container using `docker cp`
+4. `adb push` the `install` directory directly to Pika Spark
 	`docker cp install/ <container_name>:/tmp/colcon_ws/install`
 >[!Tip]
 >Adding `/` after the directory will copy the stuff within that directory. No `/` is just the entire directory including `install`
 
-4. Start the ROS Humble container from image
+5. On Pika Spark, start the ROS Humble container from image
 	`docker run -it --privileged --net=host arm64v8/ros:humble-ros-base`
-5. Run node as normal after sourcing environments. 
+6. Run node as normal after sourcing environments. 
 
 Use the following minimal ROS 2 Humble container:
 ```Dockerfile
@@ -164,6 +170,8 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /tmp/ws
 ```
+
+## Workflow Option 3 (EASIEST) - Compiling using Temporary Container
 
 Even better would be to mount the volume to Docker when running the image for first time. This command starts a container, builds the program, then deletes the container.
 ```bash
