@@ -42,6 +42,6 @@ Categories=Utility;Application;
 ## Usage with Yakut
 - Subscribe to the relevant topic ID, and pipe it directly to `netcat` over UDP
 ```bash
-y sub 1000:zubax.telega.dq | nc -u localhost 9870
+y sub 113:zubax.primitive.real16.Vector4 | nc -u localhost 9870
 ```
 - Set PlotJuggler to stream from UDP server on port 9870
