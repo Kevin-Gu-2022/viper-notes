@@ -1,5 +1,5 @@
 > [!Note] 
-> Stuff here is mostly irrelevant to current image, but the notes here are still useful if encounter similar issues
+> Notes on this page are mostly irrelevant to current image, but the notes here are still useful if encounter similar issues
 # Custom Yocto Image
 ## ROS 2 Image
 - After flashing my own custom image with ROS 2 onto board, it seems like the only way to access the shell is via UART debug port. Follow this [guide](https://docs.lxrobotics.com/en/products/pika-spark/tutorials/serial-shell)

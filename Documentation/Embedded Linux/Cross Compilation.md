@@ -1,29 +1,111 @@
-# Docker Method
-- This method is good for testing if code runs correctly on target architecture, i.e. arm64
-- You'd need to compress image and `adb push` it then `docker load` on target machine
-- Work with Docker with simulated arm64 via QEMU on host machine, which is typically x86_64
 
-## Setup
-Install emulator on host machine via Docker:
+
+
+
+
+
+## Workflow Option 1 (EASIEST) - Compiling using Temporary Container
+This method requires QEMU to emulate the arm64 arcitecture. Install using this command:
 ```bash
 docker run --privileged --rm tonistiigi/binfmt --install all
 ```
 - `docker buildx ls` to see supported architectures
-- In Dockerfile, force correct platform: 
-- ```Dockerfile
-FROM --platform=linux/arm64 ros:humble-ros-base
-  ```
-  Or specify in command line: 
-  ```bash
-docker build --platform linux/arm64 -t your_image_name .
-  ```
-
 > [!Tip]
 > Check architecture of current system using `uname -m`
 - `amd64` and `x86_64` are same thing
 - `aarch64` and `amd64` are equivalent
 
-## Workflow Option 1 - Sending Entire Image
+1. Build Docker image for a minimal ROS 2 Humble container using Dockerfile described below:
+```Dockerfile
+# Will throw warning about hardcoded platform when building, can safely ignore
+FROM --platform=linux/arm64 docker.io/arm64v8/ros:humble-ros-base
+
+# Basic dev tools + colcon + ROS tools
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    cmake \
+    git \
+    python3-pip \
+    python3-colcon-common-extensions \
+    python3-rosdep \
+    python3-vcstool \
+    ros-humble-actuator-msgs \
+    vim \
+    can-utils \
+    iproute2 \
+    sudo \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /tmp/ws
+```
+- Force correct platform either through Dockerfile: 
+- ```Dockerfile
+FROM --platform=linux/arm64 ros:humble-ros-base
+  ```
+  Or in command line: 
+  ```bash
+docker build --platform linux/arm64 -t your_image_name .
+  ```
+
+
+2. Build:
+```bash
+sudo docker build -t ros-humble-aarch64 .
+```
+
+3. Mount the volume to Docker when running the image. This command starts a container, builds the program, then deletes the container.
+```bash
+# Must be run in root of ROS 2 workspace
+docker run --rm \
+    -v $PWD:/tmp/ws \
+    ros-humble-aarch64 \
+    bash -c "cd /tmp/ws && source /opt/ros/humble/setup.bash && colcon build [--packages-select package-name]"
+```
+
+4. After build, because volume is mounted, you can just push the install directory onto Pika Spark:
+```bash
+adb push install /home/pika
+```
+>[!Tip]
+>Adding `/` after the directory will copy the stuff within that directory. No `/` is just the entire directory including `install`
+
+> [!Note] 
+> This may mess up any existing installs that use the x86 architecture. Probably a good idea to delete any existing `build` or `install` directories to avoid path issues.
+
+5. If Pika Spark image has been reflashed, make sure it also has the same image on it:
+```bash
+# This saves the image as a file we can load onto Pika Spark
+docker save ros-humble-aarch64 -o ros-humble-aarch64.tar  
+# Load onto Pika Spark
+sudo adb push ros-humble-aarch64.tar /home/pika
+
+# Log into Pika Spark
+adb shell
+su  # Switch to root
+# Load image
+docker load -i ros-humble-aarch64.tar
+# Start container for first time
+docker run -it \  
+	--name ros-humble-aarch64-container \  
+	--net=host \  
+	--privileged \  
+	ros-humble-aarch64
+```
+6. Start the container if not already started: `docker start ros-humble-aarch64`
+7. Copy the install directory into the container
+```bash
+docker cp install/ <container_name>:/tmp/colcon_ws/install
+```
+8. Attach to container and start the program
+```bash
+docker exec -it ros-humble-aarch64-container bash
+# cd into the root of ROS 2 workspace
+. /opt/ros/humble/setup.bash
+. install/setup.bash
+ros2 launch viper viper-quad.py
+```
+
+## Workflow Option 2 - Sending Entire Image
 1. Setup a base Dockerfile for development, something like this:
 ```Dockerfile
 # This Dockerfile is only the base dev workspace
@@ -44,24 +126,6 @@ RUN apt-get update && apt-get install -y \
     can-utils \
     sudo \
     && rm -rf /var/lib/apt/lists/*
-
-WORKDIR /tmp
-
-RUN git clone https://github.com/gsl-lite/gsl-lite && cd gsl-lite && \
-    mkdir build && cd build && \
-    cmake .. && make -j8 && \
-    sudo make install
-
-RUN git clone https://github.com/catchorg/Catch2 && cd Catch2 && \
-    mkdir build && cd build && \
-    cmake .. && make -j8 && \
-    sudo make install
-
-RUN git clone https://github.com/fmtlib/fmt && cd fmt && \
-    mkdir build && cd build && \
-    cmake -DFMT_TEST=OFF .. && \
-    make -j8 && \
-    sudo make install
 
 RUN mkdir -p /tmp/colcon_ws/src
 WORKDIR /tmp/colcon_ws/src
@@ -127,59 +191,4 @@ Make sure the tag matches what you gave it on the host computer.
 > [!Note]
 > The images you see in `docker images` are only the ones created directly from Dockerfile or from `docker commit`. They are ***templates*** for a container!!
 
-- Note that you'd be unable to run any CAN related stuff within the container. I suspect it's to do with the emulation layer messing stuff up
-
-
-## Workflow Option 2 - Manually Compiling in Container and Sharing `install` Directory
-This method requires QEMU to emulate the arm64 arcitecture. Install using this command:
-```bash
-docker run --privileged --rm tonistiigi/binfmt --install all
-```
-
-1. Build Docker image and run it and copy data into the Docker container described below
-2. Compile in container using QEMU emulation
-3. Copy out the `install` directory from ARM Docker container using `docker cp`
-4. `adb push` the `install` directory directly to Pika Spark
-	`docker cp install/ <container_name>:/tmp/colcon_ws/install`
->[!Tip]
->Adding `/` after the directory will copy the stuff within that directory. No `/` is just the entire directory including `install`
-
-5. On Pika Spark, start the ROS Humble container from image
-	`docker run -it --privileged --net=host arm64v8/ros:humble-ros-base`
-6. Run node as normal after sourcing environments. 
-
-Use the following minimal ROS 2 Humble container:
-```Dockerfile
-FROM --platform=linux/arm64 docker.io/arm64v8/ros:humble-ros-base
-
-# Basic dev tools + colcon + ROS tools
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    cmake \
-    git \
-    python3-pip \
-    python3-colcon-common-extensions \
-    python3-rosdep \
-    python3-vcstool \
-    ros-humble-actuator-msgs \
-    vim \
-    can-utils \
-    iproute2 \
-    sudo \
-    && rm -rf /var/lib/apt/lists/*
-
-WORKDIR /tmp/ws
-```
-
-## Workflow Option 3 (EASIEST) - Compiling using Temporary Container
-
-Even better would be to mount the volume to Docker when running the image for first time. This command starts a container, builds the program, then deletes the container.
-```bash
-# Must be run in root of ROS 2 workspace
-docker run --rm \
-    -v $PWD:/tmp/ws \
-    ros-humble-aarch64 \
-    bash -c "cd /tmp/ws && source /opt/ros/humble/setup.bash && colcon build [--packages-select package-name]"
-```
-
-After build, because volume is mounted, you can just push the install directory onto Pika Spark and copy into the ROS Humble Docker in it. Note that this will mess up any existing installs that use the x86 architecture. Probably a good idea to delete any existing `build` or `install` directories to avoid path issues.
+- Note that you'd be unable to run any CAN related stuff within the container that is running on x86 architecture. I suspect it's to do with the emulation layer messing stuff up
