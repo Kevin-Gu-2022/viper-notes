@@ -16,14 +16,15 @@ ros2 run latency_initiator latency_pong
 
 # Jitter in Control Loop
 - Jitter in motor_speed commands
+- 0.0101 s for mean
+- 1.99 ms for std dev
+- Not too bad, but still quite significant
 # Jitter in IMU Publishing
-- This will need to be in old image
+- This is tested in old image
 - Characterises the jitter in `/imu` topic
 - Basically how quickly my state estimator within node is updating
-
-# Jitter in 
-
-
+- Mean: 0.0053 s when it is supposed to be 5 ms
+- Std deviation: 5.50 ms. Quite significant
 # Jitter Compensation
 - IMU sampling and control loop are decoupled. Control loop just uses the latest IMU packet
 - Not yet implemented, but this would be extremely helpful:
@@ -39,7 +40,7 @@ gyro_rate * measurement_age;
 - I am also using the dt from last loop for the PID. I am not assuming constant loop rate.
 
 # Literature
-Effect of sampling jitter and control jitter on positioning error in motion control systems
+**Effect of sampling jitter and control jitter on positioning error in motion control systems**
 - Control jitter and sampling jitter
 - Control jitter is jitter in the control loop, or equivalently in the motor_speed ZOH
 - Sampling jitter is the jitter in the sampling

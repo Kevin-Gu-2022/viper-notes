@@ -2,7 +2,7 @@
 Set-up same for Yakut and Yukon
 - One time only
 - Accessing Babel through `slcan0` allow use of other `can-utils` like `candump`
-- `slacand` (Serial Line CAN Daemon) is a program that acts as a bridge between serial-based CAN adapters and the Linux SocketCAN networking stack
+- `slcand` (Serial Line CAN Daemon) is a program that acts as a bridge between serial-based CAN adapters and the Linux SocketCAN networking stack
 
 ```bash
 # First time only
@@ -12,6 +12,8 @@ sudo apt install can-utils
 sudo slcand -o -c -s8 /dev/ttyACM0 slcan0  # s8 is 1Mbps
 sudo ip link set slcan0 up
 ```
+
+Follow this nice [guide](https://telega.zubax.com/tutorials/yakut.html) by Pavel Kirienko on how to set up Yakut for first time, as well as more details on how it works.
 
 ## Initialise DSDL
 First time only

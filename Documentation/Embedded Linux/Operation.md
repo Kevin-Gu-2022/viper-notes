@@ -1,6 +1,8 @@
+> [!Note] 
+> Stuff here is mostly irrelevant to current image, but the notes here are still useful if encounter similar issues
 # Custom Yocto Image
 ## ROS 2 Image
-- After flashing custom image with ROS 2 onto board, it seems like the only way to access the shell is via UART debug port. Follow this [guide](https://docs.lxrobotics.com/en/products/pika-spark/tutorials/serial-shell)
+- After flashing my own custom image with ROS 2 onto board, it seems like the only way to access the shell is via UART debug port. Follow this [guide](https://docs.lxrobotics.com/en/products/pika-spark/tutorials/serial-shell)
 >[!Note] 
 >New image does not seem to appear on `dmesg -wH`
 >Also, no green light shown when connected to WiFi (this was case with default Arduino image)

@@ -41,6 +41,8 @@ where the `/world/quadcopter_teleop/set_pose` must be what world name is.
 
 # Quadcopter Simulation
 - Ripped an existing quadcopter model off of Gazebo Fuel
+	- Unfortunately the motors seem to be slightly misaligned along y-axis. Can easily change though noticed too late. Will likely affect the PID gains
+	- Weight and moments of inertia can all be adjusted
 - Motors commands are scaled by factor of 10. This is just to ensure numerical stability during simulation, i.e. less small floating point errors
 - Maintains its altitude at around 660 rad/s. Still falls really slowly though
 

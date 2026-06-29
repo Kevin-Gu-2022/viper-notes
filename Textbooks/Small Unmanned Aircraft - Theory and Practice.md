@@ -1,1 +1,0 @@
-![[Beard_and_McLain_Small_Unmanned_Aircraft_Theory_and_Practice.pdf]]

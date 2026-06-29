@@ -7,7 +7,6 @@
 ### Application Layer
 - The applications that developers develop on top of Cyphal, e.g. flight controller for UAV
 - All application-layer Cyphal nodes must implement the heartbeat message
-
 ### Presentation Layer
 - The DSDL (Data Structure Description Language) defines the data types used e.g. `uavcan.node.Heartbeat`
 - Some of them are define *registers*, which are essentially configurable parameters for nodes

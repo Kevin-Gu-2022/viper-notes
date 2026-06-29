@@ -1,4 +1,4 @@
-# Environment Setup
+# Build Environment Setup
 ```bash
 git clone https://github.com/pika-spark/pika-spark-docker && cd pika-spark-docker
 docker build -t yocto-nxp .
@@ -125,4 +125,3 @@ source setup-environment bld-xwayland
 # Current Image
 - Using the `pika-spark-ros-jazzy-image` that Alex has built
 - Need to load manually compiled device tree blob sent in Telegram into `/boot/devicetree` to activate `spidev` needed for IMU driver
-- 
