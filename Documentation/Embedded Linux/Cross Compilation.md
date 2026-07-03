@@ -5,7 +5,6 @@ This method requires QEMU to emulate the arm64 arcitecture. Install using this c
 docker run --privileged --rm tonistiigi/binfmt --install all
 ```
 - `docker buildx ls` to see supported architectures
-- This command will need to be run with every reboot
 > [!Tip]
 > Check architecture of current system using `uname -m`
 - `amd64` and `x86_64` are same thing
