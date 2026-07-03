@@ -1,15 +1,11 @@
-
-
-
-
-
-
+There may be better and faster build options with using docker's buildx. Checkout this [guide](https://www.docker.com/blog/faster-multi-platform-builds-dockerfile-cross-compilation-guide/)
 ## Workflow Option 1 (EASIEST) - Compiling using Temporary Container
 This method requires QEMU to emulate the arm64 arcitecture. Install using this command:
 ```bash
 docker run --privileged --rm tonistiigi/binfmt --install all
 ```
 - `docker buildx ls` to see supported architectures
+- This command will need to be run with every reboot
 > [!Tip]
 > Check architecture of current system using `uname -m`
 - `amd64` and `x86_64` are same thing
