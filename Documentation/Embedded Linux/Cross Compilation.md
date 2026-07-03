@@ -100,6 +100,23 @@ docker exec -it ros-humble-aarch64-container bash
 ros2 launch viper viper-quad.py
 ```
 
+### Convenience Build Script
+To save pasting that long command in step 3 just to build, run the `build.sh` script from ROS 2 workspace root to compile for x86 or ARM.
+
+```bash
+./build.sh [--arm] [--clean] [package_name]
+```
+- `--arm`: Switches the compilation pipeline from native x86_64 to target  AARCH64 emulation. This spins up the local 'ros-humble-aarch64' Docker container, binds the current working directory to internal mount paths, and triggers the colcon build isolated from host binary definitions.
+
+- `--clean`: Forces a hard reset of compilation cache before starting. Add flag if previous build was for a different architecture so that build artefacts not mixed. Deletes the following directory nodes: 
+  - `build/`
+  - `install/`
+  - `log/`
+
+- `package_name`
+        Specifies a singular target package. When provided, the script passes the name straight to colcon via the --packages-select flag, bypassing a full-workspace build sequence.
+
+
 ## Workflow Option 2 - Sending Entire Image
 1. Setup a base Dockerfile for development, something like this:
 ```Dockerfile
