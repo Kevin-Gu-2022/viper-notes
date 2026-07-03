@@ -1,0 +1,3 @@
+This directory mostly contains my personal notes throughout the project. Much of it is irrelevant, though you may find some documented struggles that may help. The major issues have been recorded elsewhere already. 
+
+If you click on 'Open Daily Note', it should automatically open in this folder and populate with Tasks checklist, Notes, and End of Day Review. Anything copied to 'What to do tomorrow' will automatically populate into the Tasks checklist when the daily note for next day is opened.
