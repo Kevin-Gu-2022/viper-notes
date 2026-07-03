@@ -40,7 +40,7 @@ gyro_rate * measurement_age;
 - I am also using the dt from last loop for the PID. I am not assuming constant loop rate.
 
 # Literature
-**Effect of sampling jitter and control jitter on positioning error in motion control systems**
+### Effect of sampling jitter and control jitter on positioning error in motion control systems
 - Control jitter and sampling jitter
 - Control jitter is jitter in the control loop, or equivalently in the motor_speed ZOH
 - Sampling jitter is the jitter in the sampling
@@ -59,3 +59,10 @@ gyro_rate * measurement_age;
 - the previously discussed jitter compensator Cg (z) in Eq. (42) is generally not helpful in reducing jitter’s effect on tracking error because the frequencies of the reference command are usually far less than the system Nyquist frequency
 	- Suggestion is get better hardware
 - an experimentally measured plant frequency response is sufficient to calculate the effect of jitter
+
+### The Jitter Margin and Its Application in the Design of Real-Time Control Systems
+- The jitter margin is defined as a function of the amount of constant delay in the control loop, and it describes how much additional time-varying delay can be tolerated before the loop goes unstable
+- For continuous-time control systems, the delay margin can be computed as Lm = ϕm/ωc, where ϕm is the phase margin and ωc is the crossover frequency of the system. Due to aliasing effects, the exact computation is more complicated for computer-controlled systems
+- Delay is the constant bit and jitter is the extra variation
+	- The input-output delay experienced by the controller can be divided into two parts: a constant part, L ≥ 0, and a timevarying part (the jitter), J ≥ 0, see Figure 2. The minimum possible delay is hence given by L, and the maximum possible delay is given by L+J.
+- This paper mainly proposes the delay and jitter margins, similar to the phase margins, where it describes how much room a system has to play around before going unstable

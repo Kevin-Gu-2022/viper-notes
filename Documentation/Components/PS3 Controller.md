@@ -6,7 +6,7 @@
 ## Wake-up Controller
 
 >[!Note]
-> Following section only needed in Ubuntu 20.04
+> Following 'Wake-Up Controller' section only needed in Ubuntu 20.04
 - Not responsive until a sequence of codes are sent to wake it up
 
 ```python
